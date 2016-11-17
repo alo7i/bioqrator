@@ -1,0 +1,37 @@
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection %> <span class="divider">/</span></li>
+  <li class="active">Add Documents</li>
+</ul>
+
+<div class="row">
+  <div class="span12">
+    <% if @type == "query" %>
+      <%= render :partial => "query" %>
+    <% else %>
+      <div class="document-list" id="document-list">
+        <%= render :partial => "pmid" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('#reportrange').daterangepicker(
+    {
+      ranges: {
+         'Last 30 Days': [moment().subtract('days', 29), moment()],
+         'This Month': [moment().startOf('month'), moment().endOf('month')],
+         'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')],
+         'This Year': [moment().startOf('year'), moment().endOf('year')],
+         'All Range': [moment("00010101", "YYYYMMDD"), moment()]
+      }
+    },
+    function(start, end) {
+        $("#range-date").val(start.format('YYYY/MM/DD') + ':' + end.format('YYYY/MM/DD'));
+        $('#reportrange span').html(start.format('YYYY/MM/DD') + ' ~ ' + end.format('YYYY/MM/DD'));
+    }
+);
+</script>
+
+
+

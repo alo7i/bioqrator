@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Node text:</b>
+  <%= @node.node_text %>
+</p>
+
+<p>
+  <b>Annotation key:</b>
+  <%= @node.entity_key %>
+</p>
+
+<p>
+  <b>Annotataion type:</b>
+  <%= @node.entity_type_id %>
+</p>
+
+<p>
+  <b>Node:</b>
+  <%= @node.node_id %>
+</p>
+
+<p>
+  <b>Node type:</b>
+  <%= @node.node_type %>
+</p>
+
+<p>
+  <b>Document:</b>
+  <%= @node.document_id %>
+</p>
+
+<p>
+  <b>Passage:</b>
+  <%= @node.passage_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>

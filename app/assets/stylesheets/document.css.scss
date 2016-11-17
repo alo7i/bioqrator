@@ -1,0 +1,240 @@
+// Place all the styles related to the document controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  div.document-list > .item {
+    margin:10px 0px;
+    padding: 5px 0;
+    border-bottom: 1px dashed #eee;
+  }
+
+  div.document-list > .item_checkbox {
+    padding-left:24px;
+  }
+
+  div.document-list > .item_positive {
+    background-color:rgb(205, 228, 205);
+    .fa-lg {
+      color:green;
+    }
+    blockquote {
+      border-left-color: rgb(158, 184, 158);
+    }
+  }
+.bs-docs-example {
+  position: relative;
+  margin: 0 0 10px 0;
+  padding:8px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+
+  div.document-list > .item_negative {
+    background-color:#ccc;
+    color:#888;
+    .fa-lg {
+      color:#888;
+    }
+    blockquote {
+      border-left-color: #aaa;
+    }
+  }
+
+  div.document-list > .item  > .title {
+    font-size:1.1em;
+    font-weight:bold;
+  } 
+  div.document-list > .item  > .source {
+    font-style:italic;
+  }
+  
+  span.annotation, span.type {
+    font-weight:bold;
+    background:#FFEC12;
+    color:#936;
+    display:inline-block;
+    padding:2px 0;
+    cursor:pointer;
+  }
+
+  span.ref {
+    background-color:#eee;
+    padding:4px 10px;
+    display:inline-block;
+    margin:1px;
+  }
+
+  span.no-exist {
+    background-color: #faa;
+    color:#fff
+  }
+
+  .recommends .help, form .help {
+    font-family:'Times New Roman', 'Georgia';
+    color:#936;
+    font-size:0.9em;
+    font-style:italic;
+  }
+
+  .table-striped tbody > tr.selected:nth-child(odd) > td,
+  .table-striped tbody > tr.selected:nth-child(odd) > th,
+  .selected {
+    background-color: #D6EBFF;
+  }
+
+  #relationModal ol li {
+    list-style:none;
+    background-color:#D6EBFF;
+    margin-bottom:1px;
+    border-bottom:1px solid #a0b0bf;
+    padding:2px;
+  }
+
+  #relationModal ol li i.fa-move {
+    color:#aaa;
+    padding:0 5px;
+  }
+
+
+  ul.additional-information li {
+    list-style:none;
+    margin-bottom: 1px;
+    padding:2px;
+  }
+
+  i.ref-delete {
+    color:#da4f49;
+  }
+
+  div.entity-desc {
+    font-size:0.9em;
+    padding:5px;
+    background:#ffe;
+    margin:0;
+  }
+  tr.selected div.entity-desc {
+    background-color: #B1D6FA;
+  }
+
+  div.entity-desc a:hover {
+    color:#6383C7;
+    text-decoration:underline;
+
+  }
+
+  ul div.entity-desc {
+    margin-left:10px;
+  }
+
+  div.entity-desc b{
+    color:#936;
+  }
+
+  div.entity-desc .tooltip b {
+    color:#fff;
+  }
+  
+  div.table-scrollable {
+    background-color:#aaa;
+    height:500px;overflow:auto;
+  }
+
+  div.table-scrollable table {
+    background-color:#fff;
+  }
+  div.entity-desc span.organism {
+    color:#6383C7;
+    font-style:italic;
+  }
+  
+  .tooltip span.organism {
+    color:#FFE142;
+    font-style:italic;
+  }
+  
+  body.dragging, body.dragging * {
+    cursor: move !important;
+  }
+
+  .dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+  }
+
+  #relationModal ol li.placeholder {
+    position: relative;
+    /** More li styles **/
+  }
+  #relationModal ol li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+  }
+
+  .highlight span.ref {
+    background-color:#7ACC7A;
+  }
+  .passage .highlight, table .highlight
+  .table-striped tbody > tr.highlight:nth-child(odd) > td,
+  .table-striped tbody > tr.highlight:nth-child(odd) > th,
+  .table-striped tbody > tr.highlight:nth-child(odd) > td,
+  .table-striped tbody > tr.highlight:nth-child(odd) > th,
+  .highlight, span.hightlight {
+    background-color: #99FF99;
+  }
+
+  span.highlight0 {background-color:#9F9;}
+  span.highlight1 {background-color:#F99;}
+  span.highlight2 {background-color:#FC9;}
+  span.highlight3 {background-color:#F9F;}
+  span.highlight4 {background-color:#C2F0FF;}
+  // .highlight span.highlight0 {background-color:#9F9;}
+  // .highlight span.highlight1 {background-color:#F99;}
+  // .highlight span.highlight2 {background-color:#C2F0FF;}
+  // .highlight span.highlight3 {background-color:#F9F;}
+  // .highlight span.highlight4 {background-color:#99FF99;}
+
+  table.sortable th {
+    background-color:#eee;
+  }
+  #annotationModal ul.annotation-locations  {
+    margin:0;padding:0;
+  }
+  #annotationModal ul.annotation-locations li {
+    list-style-type:none;
+    margin-left:10px;
+    display:inline-block;
+    width: 80px;
+    padding:4px 4px;
+  }
+  #annotationModal ul.annotation-locations li span.label {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  #annotationModal ul.annotation-locations li span.loc{
+    display:inline-block;
+  }
+  #annotationModal ul.annotation-locations li:hover {
+    background-color:#eee;
+  }
+  #annotationModal ul.annotation-locations li.selected {
+    background-color:#ffc;
+    font-weight:bold;
+    color:#936;
+  }
+span.representative {
+  color:#006dcc;
+}
+  .modal .form-horizontal .control-label {
+  width: 120px;
+}
+.modal .form-horizontal .controls {
+  margin-left: 140px;
+}
+
+.table-striped tbody > tr.document_line.done td{
+  background-color: #dfd;
+}

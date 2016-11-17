@@ -1,0 +1,60 @@
+<div class="page-header">
+  <h2><%= @collection.name %></h2>
+</div>
+
+<div class="actions" style="margin-bottom:20px;">
+  <%= render :partial => "/collections/collection_buttons" %>
+</div>
+<%= render :partial => "/shared/collection_tab" %>
+<div class="tab-content">
+  <div class="tab-pane active" id="relations">
+    <% if !@collection.has_relations? %>
+      <div class="alert alert-info alert-block">
+        No relations yet.
+      </div>
+    <% else %>
+      <%= render :partial => "/shared/sortable" %>
+      <table class="table table-striped sortable">
+        <tr>
+          <th>Document</th>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Ref</th>
+        </tr>
+        <% @collection.documents.each do |d| %>
+          <% d.relations.each do |r| %>
+            <tr>
+              <td><%=link_to d.pmid, "/collections/#{@collection.id}/documents/#{d.pmid}" %></td>
+              <td><%= r.node_id %></td>
+              <td><%= r.type_str %></td>
+              <td>
+                <% r.references.each do |ref| %>
+                  <span class="ref">
+                    <b style="color:#369;"><%= ref.ref_id %></b>
+                    <span style="color:#888;">
+                      <% ref.restore_child if ref.child.nil? %>
+                      <% if ref.child.nil? %>
+                          <span class="label label-warning">Not existing to reference</span>
+                      <% else %>
+                        <% if ref.child.annotation? %>
+                          <span style="color:#936;font-weight:bold;"><%=ref.child.node_text %></span>
+                          <span style="font-size:0.7em;">[<%=ref.child.locstr%>]</span>
+                        <% elsif ref.child.relation? %>
+                          <span style="font-size:0.7em;">Relation</span>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <i style="font-size:0.8em;"><%= ref.role %></i>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<%=render :partial => "/collections/search_document_dialog" %>
+<%=render :partial => "/collections/upload_bioc" %>

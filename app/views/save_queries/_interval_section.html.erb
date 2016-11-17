@@ -1,0 +1,32 @@
+<table class="table table-stripped">
+  <tr>
+    <th>Period (<%=@query.duration%>)</th>
+    <th># Documents</th>
+    <th>Last Updated At</th>
+    <th></th>
+  </tr>
+  <% @intervals.each do |interval| %>
+    <% cache = @caches[interval] %>
+    <tr>
+      <td>
+        <%=link_to "/collections/#{@collection.id}/save_queries/#{@query.id}?date=#{interval}" do %>
+          <%=interval.split(":")[0]%> ~ <%=interval.split(":")[1]%>
+        <% end %>
+      </td>
+      <% if cache.nil? %>
+        <td colspan="3" id="c<%=interval.tr("^a-zA-Z0-9","")%>">
+          <span class="na" style="color:pink">Never fetched before</span>
+          <span class="fetching" style="display:none;color:#936"><i>fetching...</i><i class="fa fa-refresh fa-spin"></i></span>
+          <script>
+            addAjaxFetchQueue("<%=interval.tr("^a-zA-Z0-9","")%>", '<%=interval%>');
+          </script>
+        </td>
+
+      <% else %>
+        <td><%=cache.save_query_docs_count%> </td>
+        <td><%=cache.cache_date %></td>
+        <td><%= link_to "Refresh", "", :class => "btn btn-mini"%></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

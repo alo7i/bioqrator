@@ -1,0 +1,126 @@
+<script>
+  var queue = [];
+
+  function addAjaxFetchQueue(id, interval) {
+    queue.push([id, interval]);
+  }
+</script>
+
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection%>  <span class="divider">/</span></li>
+  <li class="active">Smart Document Finder</li>
+</ul>
+
+<div class="page-header">
+  <h2><%=@collection.name %>: Smart Document Finder</h2>
+</div>
+
+<div class="well">
+<%= form_tag(collection_save_queries_path(@collection), :method => "post", :style => "margin:0", :class => "form-inline") do %>
+  <div>
+    <div class="alert alert-info">
+      <b>Smart Document Finder</b>: 
+      You can save a query with a time interval to help you search for relevant documents repeatedly at that time interval.
+    </div>
+    <select name="save_query[duration]" class="input-medium">
+      <option value="Weekly">Weekly</option>
+      <option value="Monthly" selected>Monthly</option>
+      <option value="Quarterly">Quarterly</option>
+      <option value="Yearly">Yearly</option>
+    </select>
+    <input type="text" name="save_query[term]" value="<%=params[:term] %>" autofocus="true" class="span8" placeholder="Enter a query">
+    <input type="submit" value="Save New Query" class="btn btn-primary">
+    <a href="#" onclick="$('#query-help').toggle();return false;"><span class="fa fa-question-sign"></span></a>
+    <br>
+    <%= render :partial => "/collections/query_tip" %>
+  </div>
+<% end %>
+</div>
+
+<% if @save_queries.empty? %>
+  <div class="alert alert-info alert-block">
+    No saved query. Please add a new query.
+  </div>
+<% else %>
+  <div class="row">
+    <div class="span6" id="query_section">
+      <h3>List of Saved Queries</h3>
+      <table class="table table-stripped">
+        <tr>
+          <th>Query Term</th>
+          <th>Cycle</th>
+          <th></th>
+        </tr>
+        <% @save_queries.each do |save_query| %>
+          <tr class="<%='selected' if !@query.nil? && @query.id == save_query.id %>">
+            <td><%=link_to save_query.term, "/collections/#{@collection.id}/save_queries?id=#{save_query.id}" %></td>
+            <td style="color:#aaa;"><%= save_query.duration %></td>
+            <td>
+              <%= link_to collection_save_query_path(@collection, save_query), method: :delete, data: { confirm: 'Are you sure?' }, :class => "link-danger" do %>
+                <i class="fa fa-times-circle"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="span6" id="duration_section">
+      <% unless @query.nil? %>
+        <h3>Cached Result for "<%=@query.term %>"<span class="label"><%=@query.duration%></span></h3>
+        <%= render :partial => "interval_section" %>
+        <div class="">
+          <ul class="pager">
+            <% unless @page <= 1 %>
+              <li class="previous">
+                <%=link_to "&larr; Newer".html_safe(), params.merge(:page => @page - 1) %>
+              </li>
+            <% end %>
+            <li class="next">
+              <%=link_to "Older &rarr;".html_safe(), params.merge(:page => @page + 1) %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+
+function ajaxFetch(idx, id, interval) {
+  $("td#c"+ id).find("span.na").hide();
+  $("td#c"+ id).find("span.fetching").show();
+  <% unless @query.nil? %>
+    $.ajax({
+        type: "GET",
+        url: '<%= collection_save_query_path(@collection, @query) %>/refresh.json', 
+        data:  {date: interval},
+        dataType: 'json',
+        complete: function(data) {
+          $("td#c"+ id).find("span.fetching").hide();
+          $("td#c"+ id).find("span.na").show();
+          doFetch(idx + 1);
+        },
+        success: function(data) {
+          $("td#c"+ id).replaceWith("<td>" + data.save_query_docs_count + "</td><td>" + moment().format("YYYY/MM/DD h:mm:ss")+ "</td><td></td>");  
+        },
+        error: function(data) {
+          $("td#c"+ id).replaceWith("<tdc colspan='3'>Cannot retrieve now.</td>");  
+        }
+      });  
+  <% end %>
+}
+function doFetch(idx) {
+  var el = queue[idx];
+  if (el) {
+    ajaxFetch(idx, el[0], el[1]);
+  }
+}
+
+
+$(function() {
+  doFetch(0);
+  $("#query-help").slideUp();
+});
+</script>
+

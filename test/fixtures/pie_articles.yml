@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyText
+  abstract: MyText
+  pub_year: 1
+  pub_date: 2013-05-30
+  source: MyString
+  authors: MyString
+  ppi_score: 1.5
+
+two:
+  title: MyText
+  abstract: MyText
+  pub_year: 1
+  pub_date: 2013-05-30
+  source: MyString
+  authors: MyString
+  ppi_score: 1.5

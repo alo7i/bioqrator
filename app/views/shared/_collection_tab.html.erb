@@ -1,0 +1,34 @@
+<div>
+  <ul class="nav nav-tabs" id="document-tab">
+    <li class="<%='active' if params[:controller] == 'collections'%>">
+      <%=link_to @collection do %>
+        <i class="fa fa-file-alt"></i>
+        Documents
+      <% end %>
+    </li>
+    <li class="<%='active' if params[:controller] == 'annotations'%>">
+      <%=link_to collection_annotations_path(@collection) do %>
+        <i class="fa fa-comment-alt"></i>
+        Annotations
+      <% end %>
+    </li>
+    <li class="<%='active' if params[:controller] == 'relations'%>">
+      <%=link_to collection_relations_path(@collection) do %>
+        <i class="fa fa-link"></i>
+        Relations
+      <% end %>
+    </li>
+    <li class="<%='active' if params[:controller] == 'entity_types'%>">
+      <%=link_to collection_entity_types_path(@collection) do %>
+        <i class="fa fa-tags"></i>
+        Types
+      <% end %>
+    </li>
+    <li class="<%='active' if params[:controller] == 'recommenders'%>">
+      <%=link_to collection_recommenders_path(@collection) do %>
+        <i class="fa fa-magic"></i>
+        Recommenders
+      <% end %>
+    </li>
+  </ul>
+</div>

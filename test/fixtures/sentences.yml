@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  offset: 
+  content: MyText
+  passage_id: 1
+
+two:
+  offset: 
+  content: MyText
+  passage_id: 1

@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h2><%= @collection.name %></h2>
+</div>
+
+<div class="actions" style="margin-bottom:20px;">
+  <%= render :partial => "/collections/collection_buttons" %>
+</div>
+<%= render :partial => "/shared/collection_tab" %>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="types">
+
+    <div style="margin-bottom:10px;">
+      <%= link_to new_collection_entity_type_path(@collection), :class => "btn btn-success"  do %>
+        <i class="fa fa-tags"></i>
+        New Type
+      <% end %>
+    </div>
+    <% if @collection.entity_types.blank? %>
+      <%= render :partial => "/collections/help_no_type" %>
+    <% else %>
+      <%= render :partial => "/shared/sortable" %>
+      <table class="table table-striped sortable">
+        <tr>
+          <th>Name</th>
+          <th>For Annotation</th>
+          <th>For Relation</th>
+          <th></th>
+        </tr>
+        <% @collection.entity_types.each do |e| %>
+        <tr>
+          <td><%= e.name %></td>
+          <td>
+            <% if e.for_entity %>
+              <i class="fa fa-check"></i>
+            <% else %>
+              <i class="fa fa-check-empty"></i>
+            <% end %>
+          </td>
+          <td>            
+            <% if e.for_relation %>
+              <i class="fa fa-check"></i>
+            <% else %>
+              <i class="fa fa-check-empty"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_collection_entity_type_path(@collection, e), :class => "btn btn-mini" do %>
+            <i class="fa fa-edit"></i> Edit
+            <% end %>
+            <%= link_to [@collection, e], method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-mini btn-danger" do %>
+            <i class="fa fa-times-circle"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+
+<%=render :partial => "/collections/search_document_dialog" %>
+<%=render :partial => "/collections/upload_bioc" %>

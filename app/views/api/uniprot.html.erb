@@ -1,0 +1,56 @@
+<% if @ret.size == 0 %>
+  <div class="alert alert-info alert-block">
+    There is no entry related to '<%=@term %>' in UniProtKB
+  </div>
+<% else %>
+  <% if @ret.size >= 30 %>
+    <i>First 30 results for '<%=@term%>' from UniProtKB</i>
+  <% end %>
+  <table class="table">
+    <tr>
+      <th>
+        Entry ID<br>
+        <span style="color:#369;">Entry Name</span>
+      </th>
+      <th>
+        Protein Name <br>
+        <span style="color:#369;">Gene Name</span>
+      </th>
+      <th>
+        Organism<br>
+        <span style="color:#369;">Length</span>
+
+      </th>
+    </tr>
+    <% @ret.each do |u| %>
+      <tr>
+        <td>
+          <span><%=link_to_function u.uniprot_id, "recommendEntity('UniProtKB', '#{u.uniprot_id}', '#{escape_javascript u.desc}', 'http://www.uniprot.org/uniprot/#{u.uniprot_id}');", :class => "btn btn-mini btn-primary" %></span><br>
+          <span><%=u.entry_name%></span>
+        </td>
+        <td>
+          <span><%=u.protein_names%></span><br>
+          <span style="color:#369;"><%=u.gene_name %></span>
+          <%=link_to  "http://www.uniprot.org/uniprot/#{u.uniprot_id}", :target => "_blank", :title => "more info" do %>
+            <i class="fa fa-zoom-in"></i> 
+          <% end %>
+        </td>
+        <td>
+          <span><%=u.organism%></span><br>
+          <span style="color:#369;"><%=u.length%></span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<a href="" class="btn btn-danger" onclick="recommendEntity('UniProtKB', 'Not Available', '',''); return false;">
+  <i class="fa fa-exclamation-sign"></i>
+  Click This to Annotate as "N/A" 
+</a>
+or 
+<a href="" class="btn btn-success" onclick="manualEditEntity('UniProtKB'); return false;">
+  <i class="fa fa-edit"></i>
+  Click This to Edit UniProtKB ID Manually
+</a>
+<br>
+"Open UniProtKB" button below will help you search the annotation name in UniProtKB

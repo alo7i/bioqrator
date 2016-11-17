@@ -1,0 +1,57 @@
+<ul class="breadcrumb">
+  <li>Collection: <%=link_to @collection.name, @collection%>  <span class="divider">/</span></li>
+  <li class="active">Share</li>
+</ul>
+
+<div class="page-header">
+  <h2>Share Collection: <%= @collection.name %></h2>
+</div>
+
+<h4>Who has access: </h4>
+<table class="table table-striped">
+  <tr>
+    <th>E-mail</th>
+    <th>Name</th>
+    <th>Shared from</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+  <% @collection.user_collections.each do |u| %>
+    <tr>
+      <td><%=link_to u.user.email, u.user %></td>
+      <td><%= u.user.name %></td>
+      <td>
+        <%=time_ago_in_words u.created_at %> ago
+      </td>
+      <td>
+        <% if @collection.own?(u.user) %>
+          Owner
+        <% else %>
+          User
+        <% end %>
+      </td>
+      <td>
+        <% if @collection.own?(current_user) && !@collection.own?(u.user) %>
+          <%= link_to "/collections/#{@collection.id}/remove_share?user=#{u.user.id}", method: :post, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+            <i class="fa fa-times-circle"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<% if @collection.own?(current_user) %>
+<div class="form-actions">
+  <%= form_tag(add_share_collection_path(@collection)) do %>
+    <div class="input-append">
+      <input class="span3" placeholder="E-mail address" type="email" name="email">
+      <button class="btn btn-primary"><i class="fa fa-share"></i> Share</button>
+    </div>
+  <%end%>
+</div>
+<% else %>
+<div class="alert">
+  Only the owner can add or remove users for share.
+</div>
+<% end %>
+<%=link_to "Back", @collection, :class => "btn" %>

@@ -1,0 +1,35 @@
+<h1>Listing info_nodes</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Key</th>
+    <th>Node type</th>
+    <th>Collection</th>
+    <th>Document</th>
+    <th>Passage</th>
+    <th>Node</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @info_nodes.each do |info_node| %>
+  <tr>
+    <td><%= info_node.title %></td>
+    <td><%= info_node.key %></td>
+    <td><%= info_node.node_type %></td>
+    <td><%= info_node.collection_id %></td>
+    <td><%= info_node.document_id %></td>
+    <td><%= info_node.passage_id %></td>
+    <td><%= info_node.node_id %></td>
+    <td><%= link_to 'Show', info_node %></td>
+    <td><%= link_to 'Edit', edit_info_node_path(info_node) %></td>
+    <td><%= link_to 'Destroy', info_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Info node', new_info_node_path %>

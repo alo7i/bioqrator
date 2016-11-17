@@ -1,0 +1,24 @@
+<div class="row" style="margin-bottom:5px;">
+  <div class="span12">
+    <div style="background:#444;padding:9px 0">
+      <div class="pull-left" style="padding:0 10px;">
+        <%= link_to collection_path(@collection), :class => "btn" do %>
+          <i class="fa fa-chevron-sign-up"></i> Back
+        <% end %>
+        <span class="state-selector" id="state-selector">
+          <%= render :partial => "document_status", :locals => { :done => @document.done } %>
+        </span>
+      </div>
+      <div class="pull-right" style="padding:0 10px;">
+        <%= link_to "/collections/#{@collection.id}/documents/#{@prev_document.pmid}", :class => "btn btn-primary" do %>
+          <i class="fa fa-chevron-sign-left"></i> Prev
+        <% end %>
+        <%= link_to "/collections/#{@collection.id}/documents/#{@next_document.pmid}", :class => "btn btn-primary" do %>
+          Next
+          <i class="fa fa-chevron-sign-right"></i> 
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

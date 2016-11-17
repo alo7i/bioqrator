@@ -1,0 +1,29 @@
+<% if collection.documents.blank? %>
+	<div class="alert alert-info alert-block">
+		No documents yet.
+	</div>
+<% else %>
+	<% collection.documents.each do |d| %>
+		<%=render :partial => "/documents/brief_document", :locals => {:document => d} %>
+	<% end %>
+<% end %>
+
+<script>
+function remove_document(collection_id, document_id)
+{
+  if (confirm("Are you sure?")) {
+    $.ajax({
+      url: "/collections/" + collection_id + "/documents/" + document_id+".json", 
+      method: "delete",
+      dataType: 'html',
+      complete: function(html) {
+      },
+      success: function(html) {
+        $("#brief_document_"+document_id).slideUp();
+      },
+      error: function(html) {
+      }
+    })
+  }
+}
+</script>

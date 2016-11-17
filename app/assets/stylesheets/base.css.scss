@@ -1,0 +1,104 @@
+
+/* Footer
+-------------------------------------------------- */
+
+.footer {
+  width:100%;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 50px;
+  color:#aaa;
+  border-top: 1px solid #e5e5e5;
+  // background-color: #333;
+
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  a {
+    color:#bbb;
+  }
+  a:hover {
+    color:#faa;
+  }
+}
+.footer p {
+  margin-bottom: 0;
+  color: #777;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+.marketing {
+  margin-bottom:50px;
+}
+.main-contents {
+  background-color:#fff;
+}
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+a.link-danger {
+  color: #da4f49;
+
+  :hover {
+    color:#bd362f;
+    text-decoration:none;
+  }
+}
+
+body > .navbar {
+  font-size: 13px;
+}
+
+/* Change the docs' brand */
+body > .navbar .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 20px;
+  float: left;
+  //font-family: 'Gloria Hallelujah', cursive;
+  color: #888;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+  b {
+    color: #369;
+  }
+  font-size:13px;
+}
+
+body > .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+.range-picker {
+  display:inline-block;
+  background: #eee;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  color: #333333;
+  padding: 3px;
+  margin:5px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.range-picker-none {
+  display:inline-block;
+  background: #eee;
+  color: #333333;
+  padding: 3px;
+  margin:5px;
+  line-height: 18px;
+}

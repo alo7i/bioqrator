@@ -1,0 +1,12 @@
+<ul class="pager">
+  <li class="previous <%='disabled' if @page == 1 %>">
+    <a class="ajax" href="<%=url_for(params.merge({:page => @page - 1}))%>">&larr; Previous page</a>
+  </li>
+  <li class="center">
+    <b>Results</b>: <b><%=@retstart + 1 %></b> to <b><%= @retstart + (@ids || @documents).size %></b> of 
+    <b style="color:#369"><%=number_with_delimiter @count %></b>
+  </li>
+  <li class="next <%='disabled' if @page == @last_page %>">
+    <a class="ajax" href="<%=url_for(params.merge({:page => @page + 1}))%>">Next page &rarr;</a>
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+.title { font-size:large; margin-bottom:0.3em}
+.abstract { margin-bottom:1em; font-size:medium; }
+.id-label { font-size:small; }
+.id { font-weight:bold; }
+.abbrR0 { background-color:yellow; }
+.abbrR1 { background-color:lightgreen; }
+.abbrR2 { background-color:pink; }
+.abbrR3 { background-color:cyan; }
+.abbrR4 { background-color:magenta; }

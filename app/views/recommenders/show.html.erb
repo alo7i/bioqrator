@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @recommender.name %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @recommender.link %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @recommender.desc %>
+</p>
+
+<p>
+  <b>Collection:</b>
+  <%= @recommender.collection_id %>
+</p>
+
+<p>
+  <b>Type str:</b>
+  <%= @recommender.type_str %>
+</p>
+
+
+<%= link_to 'Edit', edit_collection_recommender_path(@collection, @recommender) %> |
+<%= link_to 'Back', recommenders_path %>

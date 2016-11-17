@@ -1,0 +1,39 @@
+<% if @genes.empty? %>
+  <div class="alert alert-info alert-block">
+    There is no entry related to '<%=@term %>' in EntrezGene
+  </div>
+<% else %>
+  Result for '<%=@term%>'
+  <table class="table">
+    <tr>
+      <th>Entrez ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Species</th>
+    </tr>
+    <% @genes.each do |g| %>
+      <tr>
+        <td><%=link_to_function g.id, "recommendEntity('EntrezGene', '#{g.id}', '#{escape_javascript g.desc}', 'http://www.ncbi.nlm.nih.gov/gene/#{g.id}');" %></td>
+        <td>
+          <%=g.name %>
+          <%=link_to  "http://www.ncbi.nlm.nih.gov/gene/#{g.id}", :target => "_blank", :title => "more info" do %>
+            <i class="fa fa-zoom-in"></i>
+          <% end %>
+        </td>
+        <td><%= g.description %></td>
+        <td><%= g.species %></td>
+      </tr>
+    <% end %> 
+  </table>
+<% end %>
+<a href="" class="btn btn-danger" onclick="recommendEntity('EntrezGene', 'Not Available', '','');return false;">
+  <i class="fa fa-exclamation-sign"></i>
+  Click This to Annotate as "N/A" 
+</a>
+or 
+<a href="" class="btn btn-success" onclick="manualEditEntity('EntrezGene'); return false;">
+  <i class="fa fa-edit"></i>
+  Click This to Edit EntrezGene ID Manually
+</a>
+<br>
+"Open EntrezGene" button below will help you search the annotation name in EntrezGene

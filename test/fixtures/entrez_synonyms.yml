@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  entrez_gene_id: 1
+  name: MyString
+
+two:
+  entrez_gene_id: 1
+  name: MyString

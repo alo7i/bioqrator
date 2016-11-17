@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  duration: MyString
+  save_query_id: 1
+  save_query_doc_count: 1
+  cache_date: 2013-08-03
+
+two:
+  duration: MyString
+  save_query_id: 1
+  save_query_doc_count: 1
+  cache_date: 2013-08-03

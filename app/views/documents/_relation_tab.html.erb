@@ -1,0 +1,83 @@
+<button class="btn btn-info" onclick="showRelation('','','','', 1);"><i class="fa fa-link"></i> Create Relation</button>
+<i class="muted">Click a relation for highlighting in text.</i>
+<%= render :partial => "/shared/sortable" %>
+<div class="table-scrollable">
+  <table class="table table-striped sortable">
+  <tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Ref</th>
+    <th> </th>
+  </tr>
+  <% @document.relations.each do |r| %>
+    <tr id="a_<%=r.node_id%>" class="relation" data-id="<%=r.id%>"  data-type="<%=r.entity_type%>" data-r-id="<%=r.node_id%>">
+      <td><%= r.node_id %></td>
+      <td><%= r.type_str %></td>
+      <td>
+        <% r.references.each do |p| %>
+          <% p.restore_child if p.child.nil? %>
+          <% if p.child.nil? %>
+            <span class="label label-warning">Not existing reference to '<%= p.ref_id %>'</span>
+          <% else %>
+            <span class="ref" data-id="<%=p.ref_id%>" 
+              data-type="<%= p.child.node_type %>"
+              data-text="<%= p.child.node_text %>"
+              data-label="<%= p.role %>"
+              >
+              <b style="color:#369;"><%= p.ref_id %></b>
+              <span style="color:#888;">
+                <% if p.child.annotation? %>
+                  <% if p.child.dbid? %>
+                    <span title="<%=p.child.desc %>" class="for_tooltip" style="color:#936;font-weight:bold;"><%=p.child.node_text %></span>
+                  <% else %>
+                    <span title="No DB ID" class="for_tooltip" style="color:#936;font-weight:bold;"><%=p.child.node_text %>
+                      <i class="fa fa-warning-sign" style="color:#c00"></i>
+                    </span>
+                  <% end %>
+                <% elsif p.child.relation? %>
+                  <span style="font-size:0.7em;">Relation</span>
+                <% end %>
+              </span>
+              <i style="font-size:0.8em;"><%= p.role %></i>
+            </span>
+          <% end %>
+        <% end %>
+        <% infos = r.get_infos %>
+        <% unless infos.empty? %>
+          <div class='entity-desc'>
+            <% infos.each do |i| %>
+              <li>
+                <% if i[:desc].nil? %>
+                  <%=i[:key] %> : <%=i[:value] %><br>
+                <% else %>
+                  <span title='<%=i[:key]%>:<%=i[:value]%>' data-toggle='tooltip'>
+                    <% if i[:link].nil? %>
+                      <%= i[:desc].html_safe() %>
+                    <% else %>
+                      <%=link_to i[:link], :target => "_blank" do %>
+                        <%= i[:desc].html_safe() %>
+                        <i class="fa fa-zoom-in"></i> 
+                      <% end %>
+                    <% end %>
+                  </span>
+                <% end %>
+              </li>
+            <% end %>
+          </div>
+        <% end%>
+      </td>
+      <td style='text-align:right'>
+        <div class="">
+          <a class="edit-btn" href="#" style='margin-right:10px'>
+            <i class="fa fa-search"></i>
+          </a>
+          <%= link_to collection_document_relation_path(@collection, @document, r), method: :delete, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+            <i class="fa fa-remove"></i>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<%= render :partial => "/shared/scrollable" %>

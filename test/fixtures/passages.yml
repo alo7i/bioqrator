@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  offset: 
+  document_id: 1
+
+two:
+  type: 
+  offset: 
+  document_id: 1

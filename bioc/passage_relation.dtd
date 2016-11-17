@@ -1,0 +1,21 @@
+<!ELEMENT collection ( source, date, key, document+ ) >
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT key (#PCDATA)>
+
+<!ELEMENT document ( id, passage+ ) >
+<!ELEMENT id (#PCDATA)>
+
+<!ELEMENT passage ( type, offset, annotation*, relation* ) >
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT offset (#PCDATA)>
+
+<!ELEMENT annotation ( type, location, text ) >
+<!ATTLIST annotation id CDATA #IMPLIED >
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+
+<!ELEMENT relation ( type, label*, ref_id* ) >
+<!ATTLIST relation id CDATA #IMPLIED >
+<!ELEMENT label (#PCDATA)>
+<!ELEMENT ref_id (#PCDATA)>

@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source>bionlp09_shared_task_sample_data_rev3</source>
+  <date>20120921</date>
+  <key>bionlp.key</key>
+  <infon key="BQ_URL">http://www.bioqrator.org</infon>
+  <document>
+    <id>10485906</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">-0.176179</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>Interferons inhibit activation of STAT6 by interleukin 4 in human monocytes by inducing SOCS-1 gene expression. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="34" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="43" length="13"/>
+        <text>interleukin 4</text>
+      </annotation>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="88" length="6"/>
+        <text>SOCS-1</text>
+      </annotation>
+      <annotation id="T33">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="12" length="7"/>
+        <text>inhibit</text>
+      </annotation>
+      <annotation id="T34">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="20" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T35">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="79" length="8"/>
+        <text>inducing</text>
+      </annotation>
+      <annotation id="T36">
+        <infon key="type">Gene_expression</infon>
+        <location offset="100" length="10"/>
+        <text>expression</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>113</offset>
+      <text>Interferons (IFNs) inhibit induction by IL-4 of multiple genes in human monocytes. However, the mechanism by which IFNs mediate this inhibition has not been defined. IL-4 activates gene expression by inducing tyrosine phosphorylation, homodimerization, and nuclear translocation of the latent transcription factor, STAT6 (signal transducer and activator of transcription-6). STAT6-responsive elements are characteristically present in the promoters of IL-4-inducible genes. Because STAT6 activation is essential for IL-4-induced gene expression, we examined the ability of type I and type II IFNs to regulate activation of STAT6 by IL-4 in primary human monocytes. Pretreatment of monocytes with IFN-beta or IFN-gamma, but not IL-1, IL-2, macrophage colony-stimulating factor, granulocyte/macrophage colony-stimulating factor, IL-6, or transforming growth factor beta suppressed activation of STAT6 by IL-4. This inhibition was associated with decreased tyrosine phosphorylation and nuclear translocation of STAT6 and was not evident unless the cells were preincubated with IFN for at least 1 hr before IL-4 stimulation. Furthermore, inhibition by IFN could be blocked by cotreatment with actinomycin D and correlated temporally with induction of the JAK/STAT inhibitory gene, SOCS-1. Forced expression of SOCS-1 in a macrophage cell line, RAW264, markedly suppressed trans-activation of an IL-4-inducible reporter as well as IL-6- and IFN-gamma-induced reporter gene activity. These findings demonstrate that IFNs inhibit IL-4-induced activation of STAT6 and STAT6-dependent gene expression, at least in part, by inducing expression of SOCS-1. </text>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="153" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="279" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="428" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="435" length="50"/>
+        <text>signal transducer and activator of transcription-6</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Protein</infon>
+        <location offset="488" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Protein</infon>
+        <location offset="565" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Protein</infon>
+        <location offset="595" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Protein</infon>
+        <location offset="629" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Protein</infon>
+        <location offset="736" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Protein</infon>
+        <location offset="745" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Protein</infon>
+        <location offset="809" length="8"/>
+        <text>IFN-beta</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Protein</infon>
+        <location offset="821" length="9"/>
+        <text>IFN-gamma</text>
+      </annotation>
+      <annotation id="T16">
+        <infon key="type">Protein</infon>
+        <location offset="840" length="4"/>
+        <text>IL-1</text>
+      </annotation>
+      <annotation id="T17">
+        <infon key="type">Protein</infon>
+        <location offset="846" length="4"/>
+        <text>IL-2</text>
+      </annotation>
+      <annotation id="T18">
+        <infon key="type">Protein</infon>
+        <location offset="940" length="4"/>
+        <text>IL-6</text>
+      </annotation>
+      <annotation id="T19">
+        <infon key="type">Protein</infon>
+        <location offset="949" length="31"/>
+        <text>transforming growth factor beta</text>
+      </annotation>
+      <annotation id="T20">
+        <infon key="type">Protein</infon>
+        <location offset="1006" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T21">
+        <infon key="type">Protein</infon>
+        <location offset="1015" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T22">
+        <infon key="type">Protein</infon>
+        <location offset="1121" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T23">
+        <infon key="type">Protein</infon>
+        <location offset="1216" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T24">
+        <infon key="type">Protein</infon>
+        <location offset="1390" length="6"/>
+        <text>SOCS-1</text>
+      </annotation>
+      <annotation id="T25">
+        <infon key="type">Protein</infon>
+        <location offset="1419" length="6"/>
+        <text>SOCS-1</text>
+      </annotation>
+      <annotation id="T26">
+        <infon key="type">Protein</infon>
+        <location offset="1504" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T27">
+        <infon key="type">Protein</infon>
+        <location offset="1539" length="4"/>
+        <text>IL-6</text>
+      </annotation>
+      <annotation id="T28">
+        <infon key="type">Protein</infon>
+        <location offset="1549" length="9"/>
+        <text>IFN-gamma</text>
+      </annotation>
+      <annotation id="T29">
+        <infon key="type">Protein</infon>
+        <location offset="1636" length="4"/>
+        <text>IL-4</text>
+      </annotation>
+      <annotation id="T30">
+        <infon key="type">Protein</infon>
+        <location offset="1663" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T31">
+        <infon key="type">Protein</infon>
+        <location offset="1673" length="5"/>
+        <text>STAT6</text>
+      </annotation>
+      <annotation id="T32">
+        <infon key="type">Protein</infon>
+        <location offset="1750" length="6"/>
+        <text>SOCS-1</text>
+      </annotation>
+      <annotation id="T37">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="313" length="8"/>
+        <text>inducing</text>
+      </annotation>
+      <annotation id="T38">
+        <infon key="type">Entity</infon>
+        <location offset="322" length="8"/>
+        <text>tyrosine</text>
+      </annotation>
+      <annotation id="T39">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="331" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T40">
+        <infon key="type">Binding</infon>
+        <location offset="348" length="16"/>
+        <text>homodimerization</text>
+      </annotation>
+      <annotation id="T41">
+        <infon key="type">Entity</infon>
+        <location offset="370" length="7"/>
+        <text>nuclear</text>
+      </annotation>
+      <annotation id="T42">
+        <infon key="type">Localization</infon>
+        <location offset="378" length="13"/>
+        <text>translocation</text>
+      </annotation>
+      <annotation id="T43">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="601" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T44">
+        <infon key="type">Regulation</infon>
+        <location offset="713" length="8"/>
+        <text>regulate</text>
+      </annotation>
+      <annotation id="T45">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="722" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T46">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="981" length="10"/>
+        <text>suppressed</text>
+      </annotation>
+      <annotation id="T47">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="992" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T48">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1057" length="9"/>
+        <text>decreased</text>
+      </annotation>
+      <annotation id="T49">
+        <infon key="type">Entity</infon>
+        <location offset="1067" length="8"/>
+        <text>tyrosine</text>
+      </annotation>
+      <annotation id="T50">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="1076" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T51">
+        <infon key="type">Entity</infon>
+        <location offset="1096" length="7"/>
+        <text>nuclear</text>
+      </annotation>
+      <annotation id="T52">
+        <infon key="type">Localization</infon>
+        <location offset="1104" length="13"/>
+        <text>translocation</text>
+      </annotation>
+      <annotation id="T53">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1347" length="9"/>
+        <text>induction</text>
+      </annotation>
+      <annotation id="T54">
+        <infon key="type">Gene_expression</infon>
+        <location offset="1405" length="10"/>
+        <text>expression</text>
+      </annotation>
+      <annotation id="T55">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1628" length="7"/>
+        <text>inhibit</text>
+      </annotation>
+      <annotation id="T56">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1649" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T57">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1727" length="8"/>
+        <text>inducing</text>
+      </annotation>
+      <annotation id="T58">
+        <infon key="type">Gene_expression</infon>
+        <location offset="1736" length="10"/>
+        <text>expression</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T33" role="Negative_regulation"/>
+      <node refid="E2" role="Theme"/>
+      <node refid="E3" role="Cause"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T34" role="Positive_regulation"/>
+      <node refid="T1" role="Theme"/>
+      <node refid="T2" role="Cause"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T35" role="Positive_regulation"/>
+      <node refid="E4" role="Theme"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T36" role="Gene_expression"/>
+      <node refid="T3" role="Theme"/>
+    </relation>
+    <relation id="M1">
+      <infon key="type">Speculation</infon>
+      <node refid="E12" role="Speculation"/>
+    </relation>
+    <relation id="M2">
+      <infon key="type">Negation</infon>
+      <node refid="E14" role="Negation"/>
+    </relation>
+    <relation id="M3">
+      <infon key="type">Negation</infon>
+      <node refid="E15" role="Negation"/>
+    </relation>
+    <relation id="M4">
+      <infon key="type">Negation</infon>
+      <node refid="E18" role="Negation"/>
+    </relation>
+    <relation id="M5">
+      <infon key="type">Negation</infon>
+      <node refid="E19" role="Negation"/>
+    </relation>
+    <relation id="*0">
+      <infon key="type">Equiv</infon>
+      <node refid="T6" role="Equiv"/>
+      <node refid="T7" role="Equiv"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T37" role="Positive_regulation"/>
+      <node refid="E10" role="Theme"/>
+      <node refid="T5" role="Cause"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T37" role="Positive_regulation"/>
+      <node refid="E9" role="Theme"/>
+      <node refid="T5" role="Cause"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T37" role="Positive_regulation"/>
+      <node refid="E8" role="Theme"/>
+      <node refid="T5" role="Cause"/>
+    </relation>
+    <relation id="E8">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T39" role="Phosphorylation"/>
+      <node refid="T6" role="Theme"/>
+      <node refid="T38" role="Site"/>
+    </relation>
+    <relation id="E9">
+      <infon key="type">Binding</infon>
+      <node refid="T40" role="Binding"/>
+      <node refid="T6" role="Theme"/>
+    </relation>
+    <relation id="E10">
+      <infon key="type">Localization</infon>
+      <node refid="T42" role="Localization"/>
+      <node refid="T6" role="Theme"/>
+      <node refid="T41" role="ToLoc"/>
+    </relation>
+    <relation id="E11">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T43" role="Positive_regulation"/>
+      <node refid="T10" role="Theme"/>
+    </relation>
+    <relation id="E12">
+      <infon key="type">Regulation</infon>
+      <node refid="T44" role="Regulation"/>
+      <node refid="E13" role="Theme"/>
+    </relation>
+    <relation id="E13">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T45" role="Positive_regulation"/>
+      <node refid="T12" role="Theme"/>
+      <node refid="T13" role="Cause"/>
+    </relation>
+    <relation id="E14">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T19" role="Cause"/>
+    </relation>
+    <relation id="E15">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T17" role="Cause"/>
+    </relation>
+    <relation id="E16">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T15" role="Cause"/>
+    </relation>
+    <relation id="E17">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T14" role="Cause"/>
+    </relation>
+    <relation id="E18">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T18" role="Cause"/>
+    </relation>
+    <relation id="E19">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T46" role="Negative_regulation"/>
+      <node refid="E20" role="Theme"/>
+      <node refid="T16" role="Cause"/>
+    </relation>
+    <relation id="E20">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T47" role="Positive_regulation"/>
+      <node refid="T20" role="Theme"/>
+      <node refid="T21" role="Cause"/>
+    </relation>
+    <relation id="E21">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T48" role="Negative_regulation"/>
+      <node refid="E23" role="Theme"/>
+    </relation>
+    <relation id="E22">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T48" role="Negative_regulation"/>
+      <node refid="E24" role="Theme"/>
+    </relation>
+    <relation id="E23">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T50" role="Phosphorylation"/>
+      <node refid="T22" role="Theme"/>
+      <node refid="T49" role="Site"/>
+    </relation>
+    <relation id="E24">
+      <infon key="type">Localization</infon>
+      <node refid="T52" role="Localization"/>
+      <node refid="T22" role="Theme"/>
+      <node refid="T51" role="ToLoc"/>
+    </relation>
+    <relation id="E25">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T53" role="Positive_regulation"/>
+      <node refid="T24" role="Theme"/>
+    </relation>
+    <relation id="E26">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T54" role="Gene_expression"/>
+      <node refid="T25" role="Theme"/>
+    </relation>
+    <relation id="E27">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T55" role="Negative_regulation"/>
+      <node refid="E28" role="Theme"/>
+      <node refid="E29" role="Cause"/>
+    </relation>
+    <relation id="E28">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T56" role="Positive_regulation"/>
+      <node refid="T30" role="Theme"/>
+      <node refid="T29" role="Cause"/>
+    </relation>
+    <relation id="E29">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T57" role="Positive_regulation"/>
+      <node refid="E30" role="Theme"/>
+    </relation>
+    <relation id="E30">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T58" role="Gene_expression"/>
+      <node refid="T32" role="Theme"/>
+    </relation>
+  </document>
+  <document>
+    <id>1493333</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">1.56624</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>I kappa B/MAD-3 masks the nuclear localization signal of NF-kappa B p65 and requires the transactivation domain to inhibit NF-kappa B p65 DNA binding. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="10" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="68" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="134" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T27">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="16" length="5"/>
+        <text>masks</text>
+      </annotation>
+      <annotation id="T28">
+        <infon key="type">Entity</infon>
+        <location offset="26" length="27"/>
+        <text>nuclear localization signal</text>
+      </annotation>
+      <annotation id="T29">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="115" length="7"/>
+        <text>inhibit</text>
+      </annotation>
+      <annotation id="T30">
+        <infon key="type">Binding</infon>
+        <location offset="142" length="7"/>
+        <text>binding</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>152</offset>
+      <text>The active nuclear form of the NF-kappa B transcription factor complex is composed of two DNA binding subunits, NF-kappa B p65 and NF-kappa B p50, both of which share extensive N-terminal sequence homology with the v-rel oncogene product. The NF-kappa B p65 subunit provides the transactivation activity in this complex and serves as an intracellular receptor for a cytoplasmic inhibitor of NF-kappa B, termed I kappa B. In contrast, NF-kappa B p50 alone fails to stimulate kappa B-directed transcription, and based on prior in vitro studies, is not directly regulated by I kappa B. To investigate the molecular basis for the critical regulatory interaction between NF-kappa B and I kappa B/MAD-3, a series of human NF-kappa B p65 mutants was identified that functionally segregated DNA binding, I kappa B-mediated inhibition, and I kappa B-induced nuclear exclusion of this transcription factor. Results from in vivo expression studies performed with these NF-kappa B p65 mutants revealed the following: 1) I kappa B/MAD-3 completely inhibits NF-kappa B p65-dependent transcriptional activation mediated through the human immunodeficiency virus type 1 kappa B enhancer in human T lymphocytes, 2) the binding of I kappa B/MAD-3 to NF-kappa B p65 is sufficient to retarget NF-kappa B p65 from the nucleus to the cytoplasm, 3) selective deletion of the functional nuclear localization signal present in the Rel homology domain of NF-kappa B p65 disrupts its ability to engage I kappa B/MAD-3, and 4) the unique C-terminus of NF-kappa B p65 attenuates its own nuclear localization and contains sequences that are required for I kappa B-mediated inhibition of NF-kappa B p65 DNA binding activity. Together, these findings suggest that the nuclear localization signal and transactivation domain of NF-kappa B p65 constitute a bipartite system that is critically involved in the inhibitory function of I kappa B/MAD-3. Unexpectedly, our in vivo studies also demonstrate that I kappa B/MAD-3 binds directly to NF-kappa B p50. This interaction is functional as it leads to retargeting of NF-kappa B p50 from the nucleus to the cytoplasm. However, no loss of DNA binding activity is observed, presumably reflecting the unique C-terminal domain that is distinct from that present in NF-kappa B p65. </text>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="275" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="294" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="367" length="5"/>
+        <text>v-rel</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="406" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Protein</infon>
+        <location offset="597" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Protein</infon>
+        <location offset="843" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Protein</infon>
+        <location offset="879" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Protein</infon>
+        <location offset="1121" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Protein</infon>
+        <location offset="1170" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Protein</infon>
+        <location offset="1207" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Protein</infon>
+        <location offset="1374" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Protein</infon>
+        <location offset="1394" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T16">
+        <infon key="type">Protein</infon>
+        <location offset="1435" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T17">
+        <infon key="type">Protein</infon>
+        <location offset="1591" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T18">
+        <infon key="type">Protein</infon>
+        <location offset="1636" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T19">
+        <infon key="type">Protein</infon>
+        <location offset="1686" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T20">
+        <infon key="type">Protein</infon>
+        <location offset="1819" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T21">
+        <infon key="type">Protein</infon>
+        <location offset="1956" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T22">
+        <infon key="type">Protein</infon>
+        <location offset="2058" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T23">
+        <infon key="type">Protein</infon>
+        <location offset="2131" length="5"/>
+        <text>MAD-3</text>
+      </annotation>
+      <annotation id="T24">
+        <infon key="type">Protein</infon>
+        <location offset="2166" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T25">
+        <infon key="type">Protein</infon>
+        <location offset="2243" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T26">
+        <infon key="type">Protein</infon>
+        <location offset="2436" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T31">
+        <infon key="type">Binding</infon>
+        <location offset="215" length="7"/>
+        <text>complex</text>
+      </annotation>
+      <annotation id="T32">
+        <infon key="type">Binding</infon>
+        <location offset="246" length="7"/>
+        <text>binding</text>
+      </annotation>
+      <annotation id="T33">
+        <infon key="type">Binding</infon>
+        <location offset="503" length="8"/>
+        <text>receptor</text>
+      </annotation>
+      <annotation id="T34">
+        <infon key="type">Regulation</infon>
+        <location offset="711" length="9"/>
+        <text>regulated</text>
+      </annotation>
+      <annotation id="T35">
+        <infon key="type">Binding</infon>
+        <location offset="1353" length="7"/>
+        <text>binding</text>
+      </annotation>
+      <annotation id="T36">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1401" length="10"/>
+        <text>sufficient</text>
+      </annotation>
+      <annotation id="T37">
+        <infon key="type">Localization</infon>
+        <location offset="1415" length="8"/>
+        <text>retarget</text>
+      </annotation>
+      <annotation id="T38">
+        <infon key="type">Entity</infon>
+        <location offset="1463" length="9"/>
+        <text>cytoplasm</text>
+      </annotation>
+      <annotation id="T39">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1487" length="8"/>
+        <text>deletion</text>
+      </annotation>
+      <annotation id="T40">
+        <infon key="type">Entity</infon>
+        <location offset="1514" length="27"/>
+        <text>nuclear localization signal</text>
+      </annotation>
+      <annotation id="T41">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1595" length="8"/>
+        <text>disrupts</text>
+      </annotation>
+      <annotation id="T42">
+        <infon key="type">Binding</infon>
+        <location offset="1619" length="6"/>
+        <text>engage</text>
+      </annotation>
+      <annotation id="T43">
+        <infon key="type">Entity</infon>
+        <location offset="1661" length="10"/>
+        <text>C-terminus</text>
+      </annotation>
+      <annotation id="T44">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1690" length="10"/>
+        <text>attenuates</text>
+      </annotation>
+      <annotation id="T45">
+        <infon key="type">Entity</infon>
+        <location offset="1709" length="7"/>
+        <text>nuclear</text>
+      </annotation>
+      <annotation id="T46">
+        <infon key="type">Localization</infon>
+        <location offset="1717" length="12"/>
+        <text>localization</text>
+      </annotation>
+      <annotation id="T47">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1762" length="8"/>
+        <text>required</text>
+      </annotation>
+      <annotation id="T48">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1794" length="10"/>
+        <text>inhibition</text>
+      </annotation>
+      <annotation id="T49">
+        <infon key="type">Binding</infon>
+        <location offset="1827" length="7"/>
+        <text>binding</text>
+      </annotation>
+      <annotation id="T50">
+        <infon key="type">Binding</infon>
+        <location offset="2137" length="5"/>
+        <text>binds</text>
+      </annotation>
+      <annotation id="T51">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="2208" length="5"/>
+        <text>leads</text>
+      </annotation>
+      <annotation id="T52">
+        <infon key="type">Localization</infon>
+        <location offset="2217" length="11"/>
+        <text>retargeting</text>
+      </annotation>
+      <annotation id="T53">
+        <infon key="type">Entity</infon>
+        <location offset="2271" length="9"/>
+        <text>cytoplasm</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T27" role="Negative_regulation"/>
+      <node refid="T2" role="Theme"/>
+      <node refid="T1" role="Cause"/>
+      <node refid="T28" role="Site"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T29" role="Negative_regulation"/>
+      <node refid="E3" role="Theme"/>
+      <node refid="T1" role="Cause"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Binding</infon>
+      <node refid="T30" role="Binding"/>
+      <node refid="T3" role="Theme"/>
+    </relation>
+    <relation id="M1">
+      <infon key="type">Negation</infon>
+      <node refid="E8" role="Negation"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Binding</infon>
+      <node refid="T31" role="Binding"/>
+      <node refid="T4" role="Theme"/>
+      <node refid="T5" role="Theme2"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Binding</infon>
+      <node refid="T32" role="Binding"/>
+      <node refid="T5" role="Theme"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Binding</infon>
+      <node refid="T32" role="Binding"/>
+      <node refid="T4" role="Theme"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Binding</infon>
+      <node refid="T33" role="Binding"/>
+      <node refid="T7" role="Theme"/>
+    </relation>
+    <relation id="E8">
+      <infon key="type">Regulation</infon>
+      <node refid="T34" role="Regulation"/>
+      <node refid="T8" role="Theme"/>
+    </relation>
+    <relation id="E9">
+      <infon key="type">Binding</infon>
+      <node refid="T35" role="Binding"/>
+      <node refid="T14" role="Theme"/>
+      <node refid="T15" role="Theme2"/>
+    </relation>
+    <relation id="E10">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T36" role="Positive_regulation"/>
+      <node refid="E11" role="Theme"/>
+      <node refid="E9" role="Cause"/>
+    </relation>
+    <relation id="E11">
+      <infon key="type">Localization</infon>
+      <node refid="T37" role="Localization"/>
+      <node refid="T16" role="Theme"/>
+      <node refid="T38" role="ToLoc"/>
+    </relation>
+    <relation id="E12">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T39" role="Negative_regulation"/>
+      <node refid="T17" role="Theme"/>
+      <node refid="T40" role="Site"/>
+    </relation>
+    <relation id="E13">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T41" role="Negative_regulation"/>
+      <node refid="E14" role="Theme"/>
+      <node refid="E12" role="Cause"/>
+    </relation>
+    <relation id="E14">
+      <infon key="type">Binding</infon>
+      <node refid="T42" role="Binding"/>
+      <node refid="T17" role="Theme"/>
+      <node refid="T18" role="Theme2"/>
+    </relation>
+    <relation id="E15">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T44" role="Negative_regulation"/>
+      <node refid="E16" role="Theme"/>
+      <node refid="T19" role="Cause"/>
+      <node refid="T43" role="CSite"/>
+    </relation>
+    <relation id="E16">
+      <infon key="type">Localization</infon>
+      <node refid="T46" role="Localization"/>
+      <node refid="T19" role="Theme"/>
+      <node refid="T45" role="ToLoc"/>
+    </relation>
+    <relation id="E17">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T47" role="Positive_regulation"/>
+      <node refid="E18" role="Theme"/>
+      <node refid="T19" role="Cause"/>
+      <node refid="T43" role="CSite"/>
+    </relation>
+    <relation id="E18">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T48" role="Negative_regulation"/>
+      <node refid="E19" role="Theme"/>
+    </relation>
+    <relation id="E19">
+      <infon key="type">Binding</infon>
+      <node refid="T49" role="Binding"/>
+      <node refid="T20" role="Theme"/>
+    </relation>
+    <relation id="E20">
+      <infon key="type">Binding</infon>
+      <node refid="T50" role="Binding"/>
+      <node refid="T23" role="Theme"/>
+      <node refid="T24" role="Theme2"/>
+    </relation>
+    <relation id="E21">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T51" role="Positive_regulation"/>
+      <node refid="E22" role="Theme"/>
+      <node refid="E20" role="Cause"/>
+    </relation>
+    <relation id="E22">
+      <infon key="type">Localization</infon>
+      <node refid="T52" role="Localization"/>
+      <node refid="T25" role="Theme"/>
+      <node refid="T53" role="ToLoc"/>
+    </relation>
+  </document>
+  <document>
+    <id>7929104</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">-0.258575</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>Regulation of interleukin-2 receptor alpha chain expression and nuclear factor.kappa B activation by protein kinase C in T lymphocytes. Autocrine role of tumor necrosis factor alpha. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="14" length="34"/>
+        <text>interleukin-2 receptor alpha chain</text>
+      </annotation>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="154" length="27"/>
+        <text>tumor necrosis factor alpha</text>
+      </annotation>
+      <annotation id="T24">
+        <infon key="type">Regulation</infon>
+        <location offset="0" length="10"/>
+        <text>Regulation</text>
+      </annotation>
+      <annotation id="T25">
+        <infon key="type">Gene_expression</infon>
+        <location offset="49" length="10"/>
+        <text>expression</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>184</offset>
+      <text>The regulation of interleukin-2 receptor alpha chain (IL-2R alpha) expression and nuclear factor (NF) activation by protein kinase C (PKC) in resting T cells, has been studied. Treatment of human resting T cells with phorbol esters strongly induced the expression of IL-2R alpha and the activation of NF.kappa B. This activation was due to the translocation of p65 and c-Rel NF.kappa B proteins from cytoplasmic stores to the nucleus, where they bound the kappa B sequence of the IL-2R alpha promoter either as p50.p65 or as p50.c-Rel heterodimers. Interestingly, all of those events were largely indirect and mediated by endogenously secreted tumor necrosis factor alpha (TNF alpha), as they were strongly inhibited by a neutralizing anti-TNF alpha monoclonal antibody. Furthermore, cyclosporin A, which blocked TNF alpha production induced by PKC, strongly inhibited IL-2R alpha and NF.kappa B activation. The addition of either TNF alpha or IL-2 partially recovered cyclosporin A-induced IL-2R alpha inhibition, but only TNF alpha completely recovered NF.kappa B activation. Those results indicate that, in resting T cells, PKC activation has only a triggering role, whereas the endogenously secreted TNF alpha plays an essential role in the quantitative control of the expression of IL-2R alpha chain or NF.kappa B activation. </text>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="202" length="34"/>
+        <text>interleukin-2 receptor alpha chain</text>
+      </annotation>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="238" length="11"/>
+        <text>IL-2R alpha</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="451" length="11"/>
+        <text>IL-2R alpha</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="545" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="553" length="5"/>
+        <text>c-Rel</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Protein</infon>
+        <location offset="664" length="11"/>
+        <text>IL-2R alpha</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Protein</infon>
+        <location offset="695" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Protein</infon>
+        <location offset="699" length="3"/>
+        <text>p65</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Protein</infon>
+        <location offset="709" length="3"/>
+        <text>p50</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Protein</infon>
+        <location offset="713" length="5"/>
+        <text>c-Rel</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Protein</infon>
+        <location offset="828" length="27"/>
+        <text>tumor necrosis factor alpha</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Protein</infon>
+        <location offset="857" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Protein</infon>
+        <location offset="924" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T16">
+        <infon key="type">Protein</infon>
+        <location offset="997" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T17">
+        <infon key="type">Protein</infon>
+        <location offset="1053" length="11"/>
+        <text>IL-2R alpha</text>
+      </annotation>
+      <annotation id="T18">
+        <infon key="type">Protein</infon>
+        <location offset="1115" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T19">
+        <infon key="type">Protein</infon>
+        <location offset="1128" length="4"/>
+        <text>IL-2</text>
+      </annotation>
+      <annotation id="T20">
+        <infon key="type">Protein</infon>
+        <location offset="1175" length="11"/>
+        <text>IL-2R alpha</text>
+      </annotation>
+      <annotation id="T21">
+        <infon key="type">Protein</infon>
+        <location offset="1208" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T22">
+        <infon key="type">Protein</infon>
+        <location offset="1388" length="9"/>
+        <text>TNF alpha</text>
+      </annotation>
+      <annotation id="T23">
+        <infon key="type">Protein</infon>
+        <location offset="1471" length="17"/>
+        <text>IL-2R alpha chain</text>
+      </annotation>
+      <annotation id="T26">
+        <infon key="type">Regulation</infon>
+        <location offset="188" length="10"/>
+        <text>regulation</text>
+      </annotation>
+      <annotation id="T27">
+        <infon key="type">Gene_expression</infon>
+        <location offset="251" length="10"/>
+        <text>expression</text>
+      </annotation>
+      <annotation id="T28">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="425" length="7"/>
+        <text>induced</text>
+      </annotation>
+      <annotation id="T29">
+        <infon key="type">Gene_expression</infon>
+        <location offset="437" length="10"/>
+        <text>expression</text>
+      </annotation>
+      <annotation id="T30">
+        <infon key="type">Localization</infon>
+        <location offset="528" length="13"/>
+        <text>translocation</text>
+      </annotation>
+      <annotation id="T31">
+        <infon key="type">Entity</infon>
+        <location offset="610" length="7"/>
+        <text>nucleus</text>
+      </annotation>
+      <annotation id="T32">
+        <infon key="type">Binding</infon>
+        <location offset="630" length="5"/>
+        <text>bound</text>
+      </annotation>
+      <annotation id="T33">
+        <infon key="type">Binding</infon>
+        <location offset="719" length="12"/>
+        <text>heterodimers</text>
+      </annotation>
+      <annotation id="T34">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="794" length="8"/>
+        <text>mediated</text>
+      </annotation>
+      <annotation id="T35">
+        <infon key="type">Localization</infon>
+        <location offset="819" length="8"/>
+        <text>secreted</text>
+      </annotation>
+      <annotation id="T36">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="891" length="9"/>
+        <text>inhibited</text>
+      </annotation>
+      <annotation id="T37">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="989" length="7"/>
+        <text>blocked</text>
+      </annotation>
+      <annotation id="T38">
+        <infon key="type">Gene_expression</infon>
+        <location offset="1007" length="10"/>
+        <text>production</text>
+      </annotation>
+      <annotation id="T39">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1018" length="7"/>
+        <text>induced</text>
+      </annotation>
+      <annotation id="T40">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1043" length="9"/>
+        <text>inhibited</text>
+      </annotation>
+      <annotation id="T41">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1080" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T42">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1143" length="9"/>
+        <text>recovered</text>
+      </annotation>
+      <annotation id="T43">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1187" length="10"/>
+        <text>inhibition</text>
+      </annotation>
+      <annotation id="T44">
+        <infon key="type">Localization</infon>
+        <location offset="1379" length="8"/>
+        <text>secreted</text>
+      </annotation>
+      <annotation id="T45">
+        <infon key="type">Regulation</infon>
+        <location offset="1442" length="7"/>
+        <text>control</text>
+      </annotation>
+      <annotation id="T46">
+        <infon key="type">Gene_expression</infon>
+        <location offset="1457" length="10"/>
+        <text>expression</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Regulation</infon>
+      <node refid="T24" role="Regulation"/>
+      <node refid="E2" role="Theme"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T25" role="Gene_expression"/>
+      <node refid="T1" role="Theme"/>
+    </relation>
+    <relation id="M1">
+      <infon key="type">Speculation</infon>
+      <node refid="E3" role="Speculation"/>
+    </relation>
+    <relation id="M2">
+      <infon key="type">Speculation</infon>
+      <node refid="E4" role="Speculation"/>
+    </relation>
+    <relation id="*0">
+      <infon key="type">Equiv</infon>
+      <node refid="T14" role="Equiv"/>
+      <node refid="T13" role="Equiv"/>
+    </relation>
+    <relation id="*1">
+      <infon key="type">Equiv</infon>
+      <node refid="T4" role="Equiv"/>
+      <node refid="T3" role="Equiv"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Regulation</infon>
+      <node refid="T26" role="Regulation"/>
+      <node refid="E4" role="Theme"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T27" role="Gene_expression"/>
+      <node refid="T4" role="Theme"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T28" role="Positive_regulation"/>
+      <node refid="E6" role="Theme"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T29" role="Gene_expression"/>
+      <node refid="T5" role="Theme"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Localization</infon>
+      <node refid="T30" role="Localization"/>
+      <node refid="T6" role="Theme"/>
+      <node refid="T31" role="ToLoc"/>
+    </relation>
+    <relation id="E8">
+      <infon key="type">Localization</infon>
+      <node refid="T30" role="Localization"/>
+      <node refid="T7" role="Theme"/>
+      <node refid="T31" role="ToLoc"/>
+    </relation>
+    <relation id="E9">
+      <infon key="type">Binding</infon>
+      <node refid="T32" role="Binding"/>
+      <node refid="T8" role="Theme"/>
+      <node refid="T7" role="Theme2"/>
+    </relation>
+    <relation id="E10">
+      <infon key="type">Binding</infon>
+      <node refid="T32" role="Binding"/>
+      <node refid="T8" role="Theme"/>
+      <node refid="T6" role="Theme2"/>
+    </relation>
+    <relation id="E11">
+      <infon key="type">Binding</infon>
+      <node refid="T33" role="Binding"/>
+      <node refid="T11" role="Theme"/>
+      <node refid="T12" role="Theme2"/>
+    </relation>
+    <relation id="E12">
+      <infon key="type">Binding</infon>
+      <node refid="T33" role="Binding"/>
+      <node refid="T9" role="Theme"/>
+      <node refid="T10" role="Theme2"/>
+    </relation>
+    <relation id="E13">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T34" role="Positive_regulation"/>
+      <node refid="E10" role="Theme"/>
+      <node refid="T14" role="Cause"/>
+    </relation>
+    <relation id="E14">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T34" role="Positive_regulation"/>
+      <node refid="E9" role="Theme"/>
+      <node refid="T14" role="Cause"/>
+    </relation>
+    <relation id="E15">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T34" role="Positive_regulation"/>
+      <node refid="E8" role="Theme"/>
+      <node refid="T14" role="Cause"/>
+    </relation>
+    <relation id="E16">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T34" role="Positive_regulation"/>
+      <node refid="E7" role="Theme"/>
+      <node refid="T14" role="Cause"/>
+    </relation>
+    <relation id="E17">
+      <infon key="type">Localization</infon>
+      <node refid="T35" role="Localization"/>
+      <node refid="T14" role="Theme"/>
+    </relation>
+    <relation id="E18">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T36" role="Negative_regulation"/>
+      <node refid="E9" role="Theme"/>
+    </relation>
+    <relation id="E19">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T36" role="Negative_regulation"/>
+      <node refid="E10" role="Theme"/>
+    </relation>
+    <relation id="E20">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T36" role="Negative_regulation"/>
+      <node refid="E8" role="Theme"/>
+    </relation>
+    <relation id="E21">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T37" role="Negative_regulation"/>
+      <node refid="E23" role="Theme"/>
+    </relation>
+    <relation id="E22">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T38" role="Gene_expression"/>
+      <node refid="T16" role="Theme"/>
+    </relation>
+    <relation id="E23">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T39" role="Positive_regulation"/>
+      <node refid="E22" role="Theme"/>
+    </relation>
+    <relation id="E24">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T40" role="Negative_regulation"/>
+      <node refid="E25" role="Theme"/>
+    </relation>
+    <relation id="E25">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T41" role="Positive_regulation"/>
+      <node refid="T17" role="Theme"/>
+    </relation>
+    <relation id="E26">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T42" role="Negative_regulation"/>
+      <node refid="E28" role="Theme"/>
+      <node refid="T19" role="Cause"/>
+    </relation>
+    <relation id="E27">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T42" role="Negative_regulation"/>
+      <node refid="E28" role="Theme"/>
+      <node refid="T18" role="Cause"/>
+    </relation>
+    <relation id="E28">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T43" role="Negative_regulation"/>
+      <node refid="T20" role="Theme"/>
+    </relation>
+    <relation id="E29">
+      <infon key="type">Localization</infon>
+      <node refid="T44" role="Localization"/>
+      <node refid="T22" role="Theme"/>
+    </relation>
+    <relation id="E30">
+      <infon key="type">Regulation</infon>
+      <node refid="T45" role="Regulation"/>
+      <node refid="E31" role="Theme"/>
+      <node refid="T22" role="Cause"/>
+    </relation>
+    <relation id="E31">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T46" role="Gene_expression"/>
+      <node refid="T23" role="Theme"/>
+    </relation>
+  </document>
+  <document>
+    <id>8790376</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">0.0226994</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>Activation of Stat 5b in erythroid progenitors correlates with the ability of ErbB to induce sustained cell proliferation. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="14" length="7"/>
+        <text>Stat 5b</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="0" length="10"/>
+        <text>Activation</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>124</offset>
+      <text>Self renewal of normal erythroid progenitors is induced by the receptor tyrosine kinase c-ErbB, whereas other receptors (c-Kit/Epo-R) regulate erythroid differentiation. To address possible mechanisms that could explain this selective activity of c-ErbB, we analyzed the ability of these receptors to activate the different members of the Stat transcription factor family. Ligand activation of c-ErbB induced the tyrosine phosphorylation, DNA-binding, and reporter gene transcription of Stat 5b in erythroblasts. In contrast, ligand activation of c-Kit was unable to induce any of these effects in the same cells. Activation of the erythropoietin receptor caused specific DNA-binding of Stat 5b, but failed to induce reporter gene transcription. These biochemical findings correlate perfectly with the selective ability of c-ErbB to cause sustained self renewal in erythroid progenitors. </text>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="245" length="5"/>
+        <text>c-Kit</text>
+      </annotation>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="251" length="5"/>
+        <text>Epo-R</text>
+      </annotation>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="611" length="7"/>
+        <text>Stat 5b</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="671" length="5"/>
+        <text>c-Kit</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="756" length="23"/>
+        <text>erythropoietin receptor</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="811" length="7"/>
+        <text>Stat 5b</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="525" length="7"/>
+        <text>induced</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Entity</infon>
+        <location offset="537" length="8"/>
+        <text>tyrosine</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="546" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Binding</infon>
+        <location offset="567" length="7"/>
+        <text>binding</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="657" length="10"/>
+        <text>activation</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="691" length="6"/>
+        <text>induce</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="738" length="10"/>
+        <text>Activation</text>
+      </annotation>
+      <annotation id="T16">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="780" length="6"/>
+        <text>caused</text>
+      </annotation>
+      <annotation id="T17">
+        <infon key="type">Binding</infon>
+        <location offset="800" length="7"/>
+        <text>binding</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T8" role="Positive_regulation"/>
+      <node refid="T1" role="Theme"/>
+    </relation>
+    <relation id="M1">
+      <infon key="type">Negation</infon>
+      <node refid="E7" role="Negation"/>
+    </relation>
+    <relation id="M2">
+      <infon key="type">Negation</infon>
+      <node refid="E8" role="Negation"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T9" role="Positive_regulation"/>
+      <node refid="E4" role="Theme"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T9" role="Positive_regulation"/>
+      <node refid="E5" role="Theme"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T11" role="Phosphorylation"/>
+      <node refid="T4" role="Theme"/>
+      <node refid="T10" role="Site"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Binding</infon>
+      <node refid="T12" role="Binding"/>
+      <node refid="T4" role="Theme"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T13" role="Positive_regulation"/>
+      <node refid="T5" role="Theme"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T14" role="Positive_regulation"/>
+      <node refid="E5" role="Theme"/>
+      <node refid="E6" role="Cause"/>
+    </relation>
+    <relation id="E8">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T14" role="Positive_regulation"/>
+      <node refid="E4" role="Theme"/>
+      <node refid="E6" role="Cause"/>
+    </relation>
+    <relation id="E9">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T15" role="Positive_regulation"/>
+      <node refid="T6" role="Theme"/>
+    </relation>
+    <relation id="E10">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T16" role="Positive_regulation"/>
+      <node refid="E11" role="Theme"/>
+      <node refid="E9" role="Cause"/>
+    </relation>
+    <relation id="E11">
+      <infon key="type">Binding</infon>
+      <node refid="T17" role="Binding"/>
+      <node refid="T7" role="Theme"/>
+    </relation>
+  </document>
+  <document>
+    <id>9115366</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">-0.227633</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>A novel genetic system to isolate a dominant negative effector on DNA-binding activity of Oct-2. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="90" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Binding</infon>
+        <location offset="70" length="7"/>
+        <text>binding</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>98</offset>
+      <text>Recent studies have revealed that interactions between transcription factors play an important role in regulation of gene expression in eukaryotic cells. To isolate cDNA clones that dominantly inhibit the DNA-binding activity of Oct-2, chosen as a representative factor, we have developed a novel screening system. This employs an Escherichia coli tester strain carrying a modified lac operon as a reporter gene, with the lac operator sequence replaced by an octamer sequence. Oct-2 expressed in this tester strain represses the expression of the reporter gene and changes the phenotype of the cell from Lac+to Lac-. Introduction of a cDNA expression library prepared from a human T-cell line into the Oct-2-harboring tester strain allowed selection of three Lac+clones out of 1 x 10(5) transformants. One of them, hT86, encoding a putative zinc finger protein was found to derepress beta-galactosidase activity in the Oct-2-harboring tester strain at the transcriptional level. In gel mobility shift assays, hT86 attenuated the intensity of the retarded band composed of the octamer probe and Oct-2, suggesting a dominant negative effect on the DNA-binding activity of Oct-2. The strategy described here provides a new approach for studying protein-protein interactions that govern the complex regulation of gene expression. </text>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="327" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="575" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="800" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="982" length="18"/>
+        <text>beta-galactosidase</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="1017" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="1192" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Protein</infon>
+        <location offset="1268" length="5"/>
+        <text>Oct-2</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="291" length="7"/>
+        <text>inhibit</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Binding</infon>
+        <location offset="307" length="7"/>
+        <text>binding</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Gene_expression</infon>
+        <location offset="581" length="9"/>
+        <text>expressed</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="972" length="9"/>
+        <text>derepress</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Negative_regulation</infon>
+        <location offset="1221" length="15"/>
+        <text>negative effect</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Binding</infon>
+        <location offset="1248" length="7"/>
+        <text>binding</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Binding</infon>
+      <node refid="T9" role="Binding"/>
+      <node refid="T1" role="Theme"/>
+    </relation>
+    <relation id="M1">
+      <infon key="type">Speculation</infon>
+      <node refid="E2" role="Speculation"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T10" role="Negative_regulation"/>
+      <node refid="E3" role="Theme"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Binding</infon>
+      <node refid="T11" role="Binding"/>
+      <node refid="T2" role="Theme"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Gene_expression</infon>
+      <node refid="T12" role="Gene_expression"/>
+      <node refid="T3" role="Theme"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T13" role="Positive_regulation"/>
+      <node refid="T5" role="Theme"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Negative_regulation</infon>
+      <node refid="T14" role="Negative_regulation"/>
+      <node refid="E7" role="Theme"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Binding</infon>
+      <node refid="T15" role="Binding"/>
+      <node refid="T8" role="Theme"/>
+    </relation>
+  </document>
+  <document>
+    <id>9893043</id>
+    <infon key="BQ_FROM">PIE the search</infon>
+    <infon key="BQ_PPISCORE">-0.046111</infon>
+    <passage>
+      <infon key="type">title</infon>
+      <offset>0</offset>
+      <text>CD2 signalling induces phosphorylation of CREB in primary lymphocytes. </text>
+      <annotation id="T1">
+        <infon key="type">Protein</infon>
+        <location offset="42" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T20">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="15" length="7"/>
+        <text>induces</text>
+      </annotation>
+      <annotation id="T21">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="23" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">abstract</infon>
+      <offset>72</offset>
+      <text>Promoter sequences responsive to cyclic AMP (cAMP) are found in a number of cellular genes, and bind transcription factors of the cAMP response element binding protein (CREB)/activating transcription factor-1 (ATF-1) family. We have used a human T-lymphotropic virus type 1 (HTLV-1) model of cAMP response element (CRE) transcription to investigate the influence of lymphocyte activation on transcription from homologous regions in the viral promoter. We previously demonstrated increased HTLV-1 transcription following CD2 but not CD3 receptor cross-linking. We hypothesized that this increased viral transcription was mediated, in part, through the phosphorylation of CREB. Therefore, we investigated CD2 and CD3 receptor-mediated signalling in primary human peripheral blood mononuclear cells (PBMC). CD2, but not CD3, cross-linking increased cAMP detected by competitive enzyme-linked immunosorbent assay (ELISA) approximately fourfold. CD2 cross-linking concurrently increased phosphorylation of CREB detected by immunoblot assay eightfold. Consistent with post-translational regulation, no change in total level of CREB protein was observed. Phosphorylation of CREB occurred through a herbimycin A and Rp-cAMP- sensitive pathway, suggesting phosphorylation required antecedent activation of both protein tyrosine kinases (PTK) and protein kinase A (PKA). Both CD2 and CD3 cross-linking increased binding of nuclear proteins to a radiolabelled CRE oligonucleotide probe in electrophoretic mobility shift assays suggesting that lymphocyte activation enhances binding independently of phosphorylation of CREB at serine 133. These data indicate specific modulation of the CREB/ATF-1 family of transcription factors by the CD2 signalling pathway and suggest CD2 receptor modulation of CRE-mediated transcription following ligand engagement (e.g. cell-to-cell contact). </text>
+      <annotation id="T2">
+        <infon key="type">Protein</infon>
+        <location offset="202" length="37"/>
+        <text>cAMP response element binding protein</text>
+      </annotation>
+      <annotation id="T3">
+        <infon key="type">Protein</infon>
+        <location offset="241" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T4">
+        <infon key="type">Protein</infon>
+        <location offset="247" length="33"/>
+        <text>activating transcription factor-1</text>
+      </annotation>
+      <annotation id="T5">
+        <infon key="type">Protein</infon>
+        <location offset="282" length="5"/>
+        <text>ATF-1</text>
+      </annotation>
+      <annotation id="T6">
+        <infon key="type">Protein</infon>
+        <location offset="592" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T7">
+        <infon key="type">Protein</infon>
+        <location offset="742" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T8">
+        <infon key="type">Protein</infon>
+        <location offset="775" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T9">
+        <infon key="type">Protein</infon>
+        <location offset="876" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T10">
+        <infon key="type">Protein</infon>
+        <location offset="1013" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T11">
+        <infon key="type">Protein</infon>
+        <location offset="1073" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T12">
+        <infon key="type">Protein</infon>
+        <location offset="1193" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T13">
+        <infon key="type">Protein</infon>
+        <location offset="1239" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T14">
+        <infon key="type">Protein</infon>
+        <location offset="1438" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T15">
+        <infon key="type">Protein</infon>
+        <location offset="1679" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T16">
+        <infon key="type">Protein</infon>
+        <location offset="1746" length="4"/>
+        <text>CREB</text>
+      </annotation>
+      <annotation id="T17">
+        <infon key="type">Protein</infon>
+        <location offset="1751" length="5"/>
+        <text>ATF-1</text>
+      </annotation>
+      <annotation id="T18">
+        <infon key="type">Protein</infon>
+        <location offset="1796" length="3"/>
+        <text>CD2</text>
+      </annotation>
+      <annotation id="T19">
+        <infon key="type">Protein</infon>
+        <location offset="1831" length="12"/>
+        <text>CD2 receptor</text>
+      </annotation>
+      <annotation id="T22">
+        <infon key="type">Binding</infon>
+        <location offset="617" length="13"/>
+        <text>cross-linking</text>
+      </annotation>
+      <annotation id="T23">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="723" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T24">
+        <infon key="type">Binding</infon>
+        <location offset="894" length="13"/>
+        <text>cross-linking</text>
+      </annotation>
+      <annotation id="T25">
+        <infon key="type">Binding</infon>
+        <location offset="1017" length="13"/>
+        <text>cross-linking</text>
+      </annotation>
+      <annotation id="T26">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1044" length="9"/>
+        <text>increased</text>
+      </annotation>
+      <annotation id="T27">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="1054" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T28">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="1220" length="15"/>
+        <text>Phosphorylation</text>
+      </annotation>
+      <annotation id="T29">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1253" length="7"/>
+        <text>through</text>
+      </annotation>
+      <annotation id="T30">
+        <infon key="type">Positive_regulation</infon>
+        <location offset="1335" length="8"/>
+        <text>required</text>
+      </annotation>
+      <annotation id="T31">
+        <infon key="type">Binding</infon>
+        <location offset="1450" length="13"/>
+        <text>cross-linking</text>
+      </annotation>
+      <annotation id="T32">
+        <infon key="type">Phosphorylation</infon>
+        <location offset="1660" length="15"/>
+        <text>phosphorylation</text>
+      </annotation>
+      <annotation id="T33">
+        <infon key="type">Entity</infon>
+        <location offset="1687" length="10"/>
+        <text>serine 133</text>
+      </annotation>
+      <annotation id="T34">
+        <infon key="type">Regulation</infon>
+        <location offset="1728" length="10"/>
+        <text>modulation</text>
+      </annotation>
+    </passage>
+    <relation id="E1">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T20" role="Positive_regulation"/>
+      <node refid="E2" role="Theme"/>
+    </relation>
+    <relation id="E2">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T21" role="Phosphorylation"/>
+      <node refid="T1" role="Theme"/>
+    </relation>
+    <relation id="*0">
+      <infon key="type">Equiv</infon>
+      <node refid="T5" role="Equiv"/>
+      <node refid="T4" role="Equiv"/>
+    </relation>
+    <relation id="*1">
+      <infon key="type">Equiv</infon>
+      <node refid="T3" role="Equiv"/>
+      <node refid="T2" role="Equiv"/>
+    </relation>
+    <relation id="E3">
+      <infon key="type">Binding</infon>
+      <node refid="T22" role="Binding"/>
+      <node refid="T6" role="Theme"/>
+    </relation>
+    <relation id="E4">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T23" role="Phosphorylation"/>
+      <node refid="T7" role="Theme"/>
+    </relation>
+    <relation id="E5">
+      <infon key="type">Binding</infon>
+      <node refid="T24" role="Binding"/>
+      <node refid="T9" role="Theme"/>
+    </relation>
+    <relation id="E6">
+      <infon key="type">Binding</infon>
+      <node refid="T25" role="Binding"/>
+      <node refid="T10" role="Theme"/>
+    </relation>
+    <relation id="E7">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T26" role="Positive_regulation"/>
+      <node refid="E8" role="Theme"/>
+    </relation>
+    <relation id="E8">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T27" role="Phosphorylation"/>
+      <node refid="T11" role="Theme"/>
+    </relation>
+    <relation id="E9">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T28" role="Phosphorylation"/>
+      <node refid="T13" role="Theme"/>
+    </relation>
+    <relation id="E10">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T29" role="Positive_regulation"/>
+      <node refid="E9" role="Theme"/>
+    </relation>
+    <relation id="E11">
+      <infon key="type">Positive_regulation</infon>
+      <node refid="T30" role="Positive_regulation"/>
+      <node refid="E9" role="Theme"/>
+    </relation>
+    <relation id="E12">
+      <infon key="type">Binding</infon>
+      <node refid="T31" role="Binding"/>
+      <node refid="T14" role="Theme"/>
+    </relation>
+    <relation id="E13">
+      <infon key="type">Phosphorylation</infon>
+      <node refid="T32" role="Phosphorylation"/>
+      <node refid="T15" role="Theme"/>
+      <node refid="T33" role="Site"/>
+    </relation>
+    <relation id="E14">
+      <infon key="type">Regulation</infon>
+      <node refid="T34" role="Regulation"/>
+      <node refid="T17" role="Theme"/>
+      <node refid="T18" role="Cause"/>
+    </relation>
+    <relation id="E15">
+      <infon key="type">Regulation</infon>
+      <node refid="T34" role="Regulation"/>
+      <node refid="T16" role="Theme"/>
+      <node refid="T18" role="Cause"/>
+    </relation>
+  </document>
+</collection>
+
+

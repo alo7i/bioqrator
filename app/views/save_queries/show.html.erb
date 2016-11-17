@@ -1,0 +1,97 @@
+<script>
+  var queue = [];
+
+  function addAjaxFetchQueue(id, interval) {
+    queue.push([id, interval]);
+  }
+</script>
+
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection%>  <span class="divider">/</span></li>
+  <li><%= link_to "Smart Document Finder", collection_save_queries_path(@collection) %>  <span class="divider">/</span></li>
+  <li class="active"><%=@date%></li>
+</ul>
+
+<div class="page-header">
+  <h2><%=@collection.name %>: Smart Document Finder for "<%=@query.term %>"</h2>
+</div>
+
+<%=link_to "< Back to Finder Home", "#{collection_save_queries_path(@collection)}?id=#{@query.id}", :class => "btn btn-inverse"%>
+<div class="row">
+  <div class="span3" id="duration_section">
+    <h3><span class="label"><%=@query.duration%></span></h3>
+        <table class="table table-stripped">
+          <tr>
+            <th>Period (<%=@query.duration%>)</th>
+            <th># Documents</th>
+          </tr>
+          <% @intervals.each do |interval| %>
+            <% cache = @caches[interval] %>
+            <tr class="<%= 'selected' if interval == @date %>">
+              <td>
+                <%=link_to "/collections/#{@collection.id}/save_queries/#{@query.id}?date=#{interval}" do %>
+                  <%=interval.split(":")[0]%> ~ <%=interval.split(":")[1]%>
+                <% end %>
+              </td>
+              <% if cache.nil? %>
+                <td id="c<%=interval.tr("^a-zA-Z0-9","")%>">
+                  <span class="na" style="color:pink">N/A</span>
+                  <span class="fetching" style="display:none;color:#936"><i>fetching...</i><i class="fa fa-refresh fa-spin"></i></span>
+                  <script>
+                    addAjaxFetchQueue("<%=interval.tr("^a-zA-Z0-9","")%>", '<%=interval%>');
+                  </script>
+                </td>
+
+              <% else %>
+                <td><%=cache.save_query_docs_count%> </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+  </div>
+  <div class="span9" id="pmid_section">
+    <div class="well">
+      Cached on <b><%=@cache.cache_date %></b>
+      <%=link_to "Refresh Now", url_for(params.merge({:refresh => 1})), :class => "btn btn-mini" %>
+    </div>
+    <%= render :partial => "/documents/query" %>
+  </div>
+</div>
+
+<script>
+function ajaxFetch(idx, id, interval) {
+  $("td#c"+ id).find("span.na").hide();
+  $("td#c"+ id).find("span.fetching").show();
+  $.ajax({
+      type: "GET",
+      url: '<%= collection_save_query_path(@collection, @query) %>/refresh.json', 
+      data:  {date: interval},
+      dataType: 'json',
+      complete: function(data) {
+        $("td#c"+ id).find("span.fetching").hide();
+        $("td#c"+ id).find("span.na").show();
+        doFetch(idx + 1);
+      },
+      success: function(data) {
+        $("td#c"+ id).replaceWith("<td>" + data.save_query_docs_count + "</td>");  
+      },
+      error: function(data) {
+        $("td#c"+ id).replaceWith("<td>Cannot retrieve now.</td>");  
+      }
+    });  
+}
+function doFetch(idx) {
+  var el = queue[idx];
+  if (el) {
+    ajaxFetch(idx, el[0], el[1]);
+  }
+}
+
+
+$(function() {
+  doFetch(0)
+  $("#reportrange b").hide();
+  $("#reportrange").removeClass("range-picker").addClass("range-picker-none");
+});
+</script>
+

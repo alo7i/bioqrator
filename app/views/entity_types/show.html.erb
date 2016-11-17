@@ -1,0 +1,35 @@
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection %> <span class="divider">/</span></li>
+  <li class="active">Type: <%=@entity_type.name%></li>
+</ul>
+
+<div class="page-header">
+  <h2><%=@entity_type.name %>
+    <small>TYPE</small>
+  </h2>
+</div>
+
+<div>
+  <table class="table striped">
+    <tbody>
+      <tr>
+        <th width="100">URL</th>
+        <td>
+          <%=link_to @entity_type.url, :target => "_blank" do %>
+             <%= @entity_type.url %>
+             <i class="fa fa-external-link"></i>
+          <% end unless @entity_type.url.nil? %>
+        </td>
+        <th width="100">Type</th>
+        <td>
+          <%= @entity_type.nomenclature %>
+        </td>
+        <th width="100">Source</th>
+        <td><%= @entity_type.category %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'Edit', edit_collection_entity_type_path(@collection, @entity_type), :class => "btn btn-info" %>
+<%= link_to 'Back', "/collections/#{@collection.id}?tab=types", :class => "btn" %>

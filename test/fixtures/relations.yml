@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  passage_id: 1
+  sentence_id: 1
+
+two:
+  type: 
+  passage_id: 1
+  sentence_id: 1

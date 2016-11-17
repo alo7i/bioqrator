@@ -1,0 +1,111 @@
+<div>
+  <%= link_to @collection, :class => "btn" do %>
+    <i class="fa fa-caret-left"></i> Return to Collection
+  <% end %>
+  <button class="btn btn" id ="toggle_all"><i class="fa fa-check"></i> <span>Check All</span></button>
+  <button class="btn btn" id ="abstract_all"><i class="fa fa-zoom-in"></i> <span>Show All Abstract</span></button>
+  <button class="btn btn-primary add-document-btn" id="addCollection">
+    <i class="fa fa-save"></i> 
+    <span>Add to Collection</span>
+  </button>
+  <% if @type != "upload" %>
+    <div class="btn-group">
+      <button class="btn"><%=@pagesize%> items per page</button>
+      <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <% [10, 20, 30, 50, 100].each do |p| %>
+          <li><a class="ajax" href="<%=url_for(params.merge({:page => 1, :pagesize=> p}))%>"><%=p%> items per page</a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn">Sorted by <%=@orderstr %> </button>
+      <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a class="ajax" href="<%=url_for(params.merge({:page => 1, :order => "score"}))%>">Sort by PIE Score</a></li>
+        <li><a class="ajax" href="<%=url_for(params.merge({:page => 1, :order => "pubdate"}))%>">Sort by Publication Date</a></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<script>
+function postPMIDs(pmids) {
+  $( "#loading_ajax" ).slideDown();
+  var scores = [];
+  for(i = 0; i < pmids.length; i++) {
+    var score = parseFloat($("#chk-"+pmids[i]).data('score'));
+    if (score === NaN || score === undefined) {
+      score = null;
+    }
+    scores.push(score);
+    $("#pmid-"+pmids[i]).slideUp();
+  }  
+
+  $(".add-document-btn").prop("disabled", true).addClass("ui-state-disabled");
+  $.post("/collections/<%=@collection.id%>/documents", {pmid: pmids, score: scores}, function(data) {
+    $(".add-document-btn").prop("disabled", false).removeClass("ui-state-disabled");
+    $( "#loading_ajax" ).slideUp();
+    for(i = 0; i < pmids.length; i++) {
+      ajax_document_fetch(pmids[i], <%=@collection.id%>);
+    }
+  });
+}
+
+function markIrrelevant(el, pmid) {
+  $("#pmid-"+pmid).slideUp();
+
+  $(".add-document-btn").prop("disabled", true).addClass("ui-state-disabled");
+  $.post("/collections/<%=@collection.id%>/mark_negative", {pmid: pmid}, function(data) {
+    $(".add-document-btn").prop("disabled", false).removeClass("ui-state-disabled");
+    ajax_document_fetch(pmid, <%=@collection.id%>);
+  });
+}
+
+function unmarkIrrelevant(el, pmid) {
+  $("#pmid-"+pmid).slideUp();
+
+  $(".add-document-btn").prop("disabled", true).addClass("ui-state-disabled");
+  $.post("/collections/<%=@collection.id%>/unmark_negative", {pmid: pmid}, function(data) {
+    $(".add-document-btn").prop("disabled", false).removeClass("ui-state-disabled");
+    ajax_document_fetch(pmid, <%=@collection.id%>);
+  });
+}
+$(function(){
+  $("#addCollection").click(function() {
+    var pmids = [];
+
+    $('div.item :checked').each(function() {
+      pmids.push($(this).val());
+    });
+
+    postPMIDs(pmids);
+  });
+
+  $("button#toggle_all").click(function() {
+    var e = $(this);
+    if (e.find("span").text() == 'Check All') {
+      $("div.item :checkbox").prop("checked", true);
+      e.find("span").text("Uncheck All");
+    } else {
+      $("div.item :checkbox").prop("checked", false);
+      e.find("span").text("Check All");
+    }
+    console.log("click select all");
+    return false;
+  });
+
+  $("button#abstract_all").click(function() {
+    var e = $(this);
+    if (e.find("span").text() == 'Show All Abstract') {
+      $("div.item blockquote").show();
+      e.find("span").text("Hide All Abstract");
+    } else {
+      $("div.item blockquote").hide();
+      e.find("span").text("Show All Abstract");
+    }
+    return false;
+  });
+});
+</script>
+
+

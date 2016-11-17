@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  participant_in: 1
+  type: 1
+  reference_id: 1
+  annotation_id: 1
+  order: 1
+
+two:
+  participant_in: 1
+  type: 1
+  reference_id: 1
+  annotation_id: 1
+  order: 1

@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h2><%= @collection.name %></h2>
+</div>
+
+<div class="actions" style="margin-bottom:20px;">
+  <%= render :partial => "/collections/collection_buttons" %>
+</div>
+<%= render :partial => "/shared/collection_tab" %>
+<div class="tab-content">
+  <div class="tab-pane active" id="annotations">
+    <% if !@collection.has_annotation? %>
+      <div class="alert alert-info alert-block">
+        No annotations yet.
+      </div>
+    <% else %>
+      <%= render :partial => "/shared/sortable" %>
+      <table class="table table-striped sortable">
+        <tr>
+          <th>Document</th>
+          <th>ID</th>
+          <th>Type</th>
+          <th style="text-align:right">Offset</th>
+          <th style="text-align:right">Length</th>
+          <th>Text</th>
+        </tr>
+        <% @collection.documents.each do |d| %>
+          <% d.annotations.each do |a| %>
+            <tr>
+              <td><%=link_to d.pmid, "/collections/#{@collection.id}/documents/#{d.pmid}" %></td>
+              <td><%= a.node_id %></td>
+              <td><%= a.type_str %></td>
+              <td style="text-align:right">
+                <% a.locations.each do |location| %>
+                  <%=number_with_delimiter location.offset %><br/>
+                <% end %>
+              </td>
+              <td style="text-align:right">
+                <% a.locations.each do |location| %>
+                  <%=number_with_delimiter location.length %><br/>
+                <% end %>
+              </td>
+              <td><%= a.node_text %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+
+<%=render :partial => "/collections/search_document_dialog" %>
+<%=render :partial => "/collections/upload_bioc" %>

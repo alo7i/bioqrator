@@ -1,0 +1,31 @@
+<div class="page-header">
+	<h2>Users</h2>
+</div>
+<table class="table table-striped">
+	<tr>
+		<th>Email</th>
+		<th>Name</th>
+		<th># Collection</th>
+		<th colspan="2">Last Access</th>
+    <th></th>
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%=link_to user.email, edit_user_path(user) %></td>
+			<td><%=user.first_name %> <%= user.last_name %></td>
+			<td><%=user.own_collections.size %></td>
+			<td>
+        <%=time_ago_in_words user.last_sign_in_at %> 
+      </td>
+      <td>
+        <%= user.last_sign_in_ip %> 
+      </td>
+       <td>
+        <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+          <i class="fa fa-times-circle"></i>
+        <% end %>
+      </td>
+		</tr>
+	<% end %>
+</table>
+<%= paginate @users, :theme => 'twitter-bootstrap' %>

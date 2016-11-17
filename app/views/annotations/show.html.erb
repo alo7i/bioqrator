@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Aid:</b>
+  <%= @annotation.aid %>
+</p>
+
+<p>
+  <b>Annotation key:</b>
+  <%= @annotation.entity_key %>
+</p>
+
+
+<%= link_to 'Edit', edit_annotation_path(@annotation) %> |
+<%= link_to 'Back', annotations_path %>

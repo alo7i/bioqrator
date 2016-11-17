@@ -1,0 +1,13 @@
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection %> <span class="divider">/</span></li>
+  <li><%=link_to "Recommenders", collection_recommenders_path(@collection) %> <span class="divider">/</span></li>
+  <li class="active">Edit</li>
+</ul>
+
+<div class="page-header">
+  <h1>Edit Recommender</h1>
+</div>
+
+<%= render 'form' %>
+
+<button onclick="history.back();" class="btn">Back</button>

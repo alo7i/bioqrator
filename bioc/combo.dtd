@@ -1,0 +1,144 @@
+<!-- Combination DTD that will work with any document so far. -->
+
+<!--
+
+    elements vs attributes: elements because no clear argument for
+    making attributes 
+
+    Some believe XML is easily read by humans and that should be
+    supported by clearly formatting the elements. In the long run,
+    this is destracting. While the only meaningful spaces are in text
+    elements and the other spaces can be ignored, current tools add no
+    additional space.  Formatters and editors may be used to make the
+    XML file appear more readable.
+
+    The possible variety of annotations that one might want to produce
+    or use is nearly countless. There is no guarantee that these are
+    organized in the nice nested structure required for XML
+    elements. Even if they were, it would be nice to more easily
+    ignore unwanted annotations.  So annotations are recorded in a
+    stand off manner, external to the annotated text. The exceptions
+    are passages and sentences because of their fundamental place in
+    text.
+
+    The text is expected to be encoded in Unicode, specifically
+    utf-8. This is one of the encodings required to be implented by
+    XML tools, is portable between big-endian and little-endian
+    machines and is a superset of 7-bit ASCII. Code points beyond 127
+    may be expressed directly in utf-8 or indirectly using numeric
+    entities.  Since many tools today still only directly process
+    ASCII characters, conversion should be available and
+    standardized.  Offsets should be in 8 bit code units (bytes) for
+    easier processing by naive programs.
+
+    Nothing final. Just current thoughts.
+
+    collection:  Group of documents, usually from a larger corpus. If
+    a group of documents is from several corpora, use several
+    collections.
+
+    source:  Name of the source corpus from which the documents were selected
+
+    date:  integer, yyyymmdd. Date documents extracted from original
+    source.
+
+    key: Separate file describing the types used and any other useful
+    information about the data in the file. For example, if a file
+    includes part-of-speech tags, this file should describe the
+    part-of-speech tags used.
+
+    document:  A document in the collection. A single, complete
+    stand-alone document has described by it's parent source.
+
+    id:  Typically, the id of the document in the parent
+    source. Should at least be unique in the collection.
+
+    passage:  One portion of the document.  For now PubMed documents
+    have a title and an abstract. Structured abstracts could have
+    additional passages. For a full text document, passages could be
+    sections such as Introduction, Materials and Methods, or
+    Conclusion. Another option would be paragraphs. Passages impose a
+    linear structure on the document.
+
+    type:  Type of passage. For pubmed: "title" or "abstract".
+    Options would depend on source or collecion.
+
+    offset: Where the passage occurs in the parent document. Depending
+    on the source corpus, this might be a very relevant number.  They
+    would typically be sequential and identify a passage's position in
+    the document.  Since pubmed is extracted from an XML file, the
+    title has an offset of zero, while the abstract is assumed to
+    begin after the title and one space.
+
+    text: The original text of the passage.
+
+    sentence:  One sentence of the passage.
+
+    offset: A document offset to where the sentence begins in the
+    passage. This value is the sum of the passage offset and the local
+    offset within the passage.
+
+    text: The original text of the sentence.
+
+    annotation:  Stand-off annotation
+
+    id: Used to refer to this annotation in relations.
+
+    type:  Type of annotation. Only one implented yet is
+    "token". Expected examples include "noun phrase", "gene", and
+    "disease".
+
+    location: Location of the annotated text. Expected to be a string
+    of the form 
+      offset : length ( ; offset : length )*
+    where offset and length are non-negative integers.  The offset
+    should be a document offset to where the annotated text begins in
+    the passage or sentence. The value is the sum of the passage or
+    sentence offset and the local offset within the passage or
+    sentence. The length is the length of the annotationed text. While
+    unlikely, this could be zero to describe an annotation that
+    belongs between two characters.
+
+    text:  Unless something else is defined one would be expect the
+    annotated text. The length is redundant in this case. Other uses
+    for this text would be the specific part-of-speech for POS
+    tagging.
+
+    relation: Relationship between multiple annotations.
+
+    id: Used to refer to this relation in other relationships.
+
+    type:  Type of relation. Implemented examples include abbreviation
+    long forms and short forms and protein events.
+
+    label: Describes how the referenced annotated object or other
+    relation participates in the current relationship.
+
+    ref_id: Id of an annotated object or other relation. Typically
+    there will be one label for each ref_id.
+
+-->
+
+<!ELEMENT collection ( source, date, key, document+ ) >
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT key (#PCDATA)>
+
+<!ELEMENT document ( id, passage+ ) >
+<!ELEMENT id (#PCDATA)>
+
+<!ELEMENT passage ( type, offset, ( text* | sentence* | ( annotation*, relation* ) ) ) >
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT offset (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+
+<!ELEMENT sentence ( offset, ( text | ( annotation*, relation* ) ) )>
+
+<!ELEMENT annotation ( type, location, text ) >
+<!ATTLIST annotation id CDATA #IMPLIED >
+<!ELEMENT location (#PCDATA)>
+
+<!ELEMENT relation ( type, label*, ref_id* ) >
+<!ATTLIST relation id CDATA #IMPLIED >
+<!ELEMENT label (#PCDATA)>
+<!ELEMENT ref_id (#PCDATA)>

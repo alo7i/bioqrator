@@ -1,0 +1,8 @@
+<div class="item" id="brief_document_<%=document.id%>" style="margin:5px 0;">
+	<span class="title"><%=link_to document.title, "/collections/#{@collection.id}/documents/#{document.pmid}" %></span>
+	<span class="authors"><%= document.au.gsub(/\n/,', ') unless document.au.nil? %></span>
+	<span class="source"><%= document.source %></span>
+  <a href="#" onclick ="remove_document(<%=@collection.id%>, <%=document.id%>);return false;" class="link-danger">
+    <i class="fa fa-times-circle"></i>
+  </a>
+</div>

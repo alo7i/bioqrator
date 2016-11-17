@@ -1,0 +1,29 @@
+  <div class="make-switch doc-state-switch" id="doneSwitch" style="width:110px; margin:0 5px; font-size:12px;" data-on="info" data-off="warning" data-text-label="Done" data-on-label="Yes" data-off-label="No">
+    <input type="checkbox" name="done" <%="checked" if @document.done? %>>
+  </div>
+  <div class="make-switch doc-state-switch" style="width:130px; font-size:12px;" data-type="curatable" data-on="success" data-off="danger" data-text-label="Curatable" data-on-label="Yes" data-off-label="No">
+      <input type="checkbox" name="curatable" <%="checked" if @document.curatable? %>>
+  </div>
+
+<script>
+$(function() {
+  $('.doc-state-switch').on('switch-change', function (e, data) {
+    var name = $(data.el).attr('name');
+    var params = {};
+    if (name == "curatable") {
+      $("#doneSwitch").bootstrapSwitch('setState', true);
+    }
+    params[name] = data.value;
+    $.ajax({
+      url: "/collections/<%=@collection.id%>/documents/<%=@document.pmid%>/done",
+      type: "POST", 
+      data: params,
+      success: function(html) {
+      },
+      error: function(jqXHR, textStatus) {
+        alert("Error: please try again later. (" + textStatus + ")");
+      }
+    });
+  });
+});
+</script>

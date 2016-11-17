@@ -1,0 +1,110 @@
+<% if @collection.own?(current_user) %>
+  <%= link_to edit_collection_path(@collection), :class => "btn" do %>
+  	<i class="fa fa-edit"></i>
+  	Edit
+  <% end %> 
+<% end %>
+
+<%= link_to share_collection_path(@collection), :class => "btn" do %>
+	<i class="fa fa-share"></i>
+	Share
+<% end %> 
+
+
+<%= link_to "#uploadModal", :class => "btn btn-info", :role => "button", "data-toggle" => "modal" do %>
+	<i class="fa fa-cloud-upload"></i>
+	Upload &amp; Merge BioC
+<% end %>
+
+
+<a id="downloadButton" role="button" class ="btn btn-info">
+	<i class="fa fa-cloud-download"></i>
+	Download BioC / CSV
+</a>
+
+<div class="modal hide fade" id="downloadModal">
+  <form class="form-horizontal" method="get" style="margin:0;padding:0">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3>Select a Filename for Download</h3>
+    </div>
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="filename">Filename</label>
+        <div class="controls">
+          <input type="text" name="filename" value="" autofocus="autofocus" placeholder="input file name here" class="span4">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="pmids">File Type</label>
+        <div class="controls">
+          <select name="filetype">
+            <option value="xml">XML (BioC file fotmat)</option>
+            <option value="csv">CSV (Comma-Separated Values)</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="pmids">PMID list</label>
+        <div class="controls">
+          <textarea name="pmids" id="upload-pmids" cols="40" rows="5" readonly class="span4"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary" onclick="$('#downloadModal').modal('hide');">Download</button>
+    </div>
+  </form>
+</div>
+<script>
+$(function() {
+  $("#downloadModal").on("shown", function() {
+    $("#downloadModal input[name=filename]").focus();
+  });
+
+  $("#downloadModal form").on("submit", function() {
+    if ($("#downloadModal form select[name=filetype]").val() == "xml") {
+      $("#downloadModal form").attr("action", "<%=url_for(:format => :xml) %>");
+    } else {
+      $("#downloadModal form").attr("action", "<%=url_for(:format => :csv) %>");
+    }
+    return true;
+  });
+
+  $("#downloadButton").click(function() {
+    var values = _.map($(".doc-checkbox:checked"), function(e) {
+      return $(e).val();
+    });
+    if (values.length == 0) {
+      if (!confirm("No document selected. Are you sure?")) {
+        return;
+      }
+    }
+    $("#upload-pmids").val(values.join(","));
+    $("#downloadModal").modal("show");
+  })
+});
+  
+</script>
+
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa fa-gear"></i> Option
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to remove_documents_collection_path(@collection), data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+        <i class="fa fa-trash"></i>
+        Remove All Documents
+      <% end %>
+    </li>
+    <li>
+      <%= link_to remove_annotations_collection_path(@collection), data: { confirm: 'Are you sure?' }, class: "link-danger"  do %>
+        <i class="fa fa-trash"></i>
+        Remove All Annotations / Relations
+      <% end %>
+    </li>
+  </ul>
+</div>

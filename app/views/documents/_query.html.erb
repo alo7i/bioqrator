@@ -1,0 +1,47 @@
+<form method="get" action="<%=new_collection_document_path(@collection)%>" class="form-inline">     
+  <div id="reportrange" class="range-picker">
+      <i class="fa fa-calendar fa-lg"></i>
+      <span><%=@date.split(':')[0] %> ~ <%=@date.split(':')[1] %></span> <b class="caret"></b>
+  </div>
+  <input type="hidden" name="date" value="<%=@date%>" id="range-date">
+  <input type="text" name="term" value="<%=params[:term] || @term %>" autofocus="true" class="input-medium span6" placeholder="Enter a query">
+  <input type="submit" value="Query" class="btn btn-success">
+</form>
+
+<div class="document-list" id="document-list">
+  <% if ( @pmids.nil? || @pmids.empty?) %>
+    No document found.
+  <% else %>
+    <%= render :partial => "documents/add_document" %>
+    <div style="margin-top:10px;">
+      <%= page_entries_info @pmids, :entry_name => 'result'  %>
+    </div>
+    <% if @count > 1000 %>
+      <div class="alert alert-danger">
+        <%= render :partial => "/shared/limit1000" %>
+      </div>
+    <% end %>
+    <div id="loading_ajax" style="text-align:center;padding:10px;margin:10px 0;background:#ffc;font-size:1.0em;display:none;">
+      Uploading Documents... <i class="fa fa-refresh fa-spin"></i>
+    </div>
+    <% @pmids.each do |p| %>
+      <% id = p.pmid %>
+      <% d = DocumentCache.find_by_id(id) %>
+      <% if d.nil? %>
+        <div class="item" id="pmid-<%=id%>">PMID: <%=id %> <span></span>
+          <i class="fetching">fetching... <i class="fa fa-refresh fa-spin"></i> </i>
+        </div>
+        <script>
+          $(function() {
+            ajax_document_fetch(<%=id%>, <%=@collection.id%>);
+          });
+        </script>
+      <% else %>
+        <%=render :partial => "/documents/document", :locals => {:document => d, :pie_score => p.score } %>
+      <% end %>
+    <% end %>
+    <div style="text-align:center">
+      <%= paginate @pmids, :theme => 'twitter-bootstrap' %>
+    </div>
+  <% end %>
+</div>

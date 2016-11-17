@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @info_node.title %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @info_node.key %>
+</p>
+
+<p>
+  <b>Node type:</b>
+  <%= @info_node.node_type %>
+</p>
+
+<p>
+  <b>Collection:</b>
+  <%= @info_node.collection_id %>
+</p>
+
+<p>
+  <b>Document:</b>
+  <%= @info_node.document_id %>
+</p>
+
+<p>
+  <b>Passage:</b>
+  <%= @info_node.passage_id %>
+</p>
+
+<p>
+  <b>Node:</b>
+  <%= @info_node.node_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_info_node_path(@info_node) %> |
+<%= link_to 'Back', info_nodes_path %>

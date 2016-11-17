@@ -1,0 +1,63 @@
+<%= form_for(@collection, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+      <% @collection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label required" %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "input-xxlarge", :autofocus => true, :placeholder => "Required" %>
+      <span class="help-block">
+        Name of a collection 
+      </span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :source, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :source, :placeholder => "", :class => "input-xxlarge" %>
+      <span class="help-block">
+        Name of the source corpus from which documents are selected
+      </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :s_date, :class => "control-label" do %>
+      Date
+    <% end %>
+    <div class="controls">
+      <%= f.text_field :s_date, :placeholder => "", :"data-behaviour" => 'datepicker' %>
+      <span class="help-block">
+        Date documents are extracted from the source
+      </span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :key, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :key, :placeholder => "" %>
+      <span class="help-block">
+        Separate file describing entity types used and any other necessary information for understanding BioC data
+      </span>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('[data-behaviour~=datepicker]').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose:true
+  });
+</script>

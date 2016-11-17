@@ -1,0 +1,184 @@
+
+<i class="muted">Click an annotation for highlighting in text.</i>
+<%= render :partial => "/shared/sortable" %>
+<div class="table-scrollable">
+<table class="table table-striped sortable">
+  <tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th width="300px">Text</th>
+    <th> </th>
+  </tr>
+  <%- ranges = [] -%>
+  <% @document.annotations.each do |a| %>
+    <tr id="a_<%=a.node_id%>" data-id="<%=a.id%>" class="annotation_tr" data-type="<%=a.entity_type%>" data-a-id="<%=a.node_id%>"
+      data-representative="<%=escape_javascript a.representative_name%>" data-text="<%=escape_javascript a.node_text%>"
+      >
+      <td><%= a.node_id %></td>
+      <td><%= a.type_str %></td>
+      <td>
+        <span class='text'>
+          <% unless a.representative_name.nil? %>
+            <span class="representative"><i class="fa fa-flag" style='color:#aaa;'></i> <%= a.representative_name %></span>
+          <% else %>
+            <%= a.node_text %>
+          <% end %>
+        </span><br>
+        <% 
+          infos = a.get_infos 
+          normalized = false
+        %>
+        <% unless infos.empty? %>
+            <% infos.each do |i| %>
+                <% unless i[:link].nil? %>
+                  <% normalized = true %>
+                  <% if i[:key] == "UniProtKB" && (i[:desc] == "" || i[:desc].nil?) %>
+                    <script>
+                      $(function() {
+                        $.ajax({type: "GET", url: "/uniprot/<%=i[:value]%>", success: function(data) {
+                          if (data.length > 0) {
+                            $(".uniprot_<%=i[:value]%>_title").attr("title", data).tooltip('destroy').tooltip({html:true});
+                            $(".uniprot_<%=i[:value]%>_text").html(data);
+                          }
+                        }});
+                      });
+                    </script>
+                  <% end %>
+                  <span title="<%= i[:desc].html_safe() %>" data-toggle='tooltip' class="uniprot_<%=i[:value]%>_title label label-info for_tooltip">
+                    <%=link_to i[:link], :target => "_blank", :style => "color:#fff" do %>
+                      <i class="fa fa-zoom-in"></i>
+                    <%=i[:key] %> : <%=i[:value] %>
+                    <% end %>
+                  </span>
+                <% end %>
+            <% end %>
+        <% end%>
+        <% unless infos.empty? %>
+            <% infos.each do |i| %>
+                <% if i[:link].nil? %>
+                  <li><%=i[:key] %> : <%=i[:value] %></li>
+                <% end %>
+            <% end %>
+        <% end%>
+        <% if normalized == false %>
+          <span class="label label-important">
+            <i class="fa fa-warning-sign"></i> No DB ID
+          </span>
+        <% end %>
+      </td>
+      <td style='text-align:right;width:40px'>
+          <a href="#" class="edit-btn" style='margin-right:10px'>
+            <i class="fa fa-search"></i>
+          </a>
+          <%= link_to collection_document_annotation_path(@collection, @document, a), method: :delete, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+            <i class="fa fa-remove"></i>
+          <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<%= render :partial => "/shared/scrollable" %>
+
+<div id="checking_pie_annotation" style="padding-bottom:100px;">
+  <div class="label label-info checking">
+    <i class="fa fa-spinner fa fa-spin"></i> Checking PIE the search annotations ...
+  </div>
+  <a href="#pie-importer" role="button" class="btn hide" data-toggle="modal">
+    <i class="fa fa-zoom-in"></i> Open PIE the search Annotations 
+    <!--(<span class="num"></span> annotation(s) available)-->
+  </a>
+  <div class="no-exist hide label label-info">No PIE-the-search Annotation Found</div>
+  <div class="not-available hide label">PIE-the-search Annotation: not available for out-of-date documetns. </div>
+  <div class="clearfix"></div>
+</div>
+
+<div id="pie-importer" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">PIE Annotation Importer:</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_tag("/collections/#{@collection.id}/documents/#{@document.pmid}/import_pie", {:class => "form-horizontal", :method => :post}) do %>
+      <table class="table">
+        <tr>
+          <th>
+            <input type="checkbox" checked onchange="$('#pie-importer td :checkbox').prop('checked', $(this).prop('checked'));">
+          </th>
+          <th>Offset</th>
+          <th>Length</th>
+          <th>String</th>
+          <th>Type</th>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-right">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Import</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var idx_pie_entry;
+function pie_result(num, updateDate) {
+  $("#checking_pie_annotation .checking").hide();
+  $("#checking_pie_annotation .btn").show();
+  if (num <= 0 || updateDate > "<%=@document.update_date %>") {
+    $("#checking_pie_annotation .btn").attr("disabled", "disabled");
+    $("#checking_pie_annotation .btn").attr("href", "#");
+    $("#checking_pie_annotation .btn").click(function() {return false;});
+    $("#checking_pie_annotation .btn").attr("data-toggle", "");
+  } 
+  idx_pie_entry = 0;
+  if (updateDate > "<%=@document.update_date %>") {
+    $("#update-date-pubmed").text(updateDate); 
+    $.post("/documents/check", {pmid: <%= @document.pmid %>, update:updateDate}, function() {});
+    $("#update-notice").slideDown().delay(4000).slideUp();
+  }
+}
+
+function refetch_document() {
+  <% if @document.nodes.empty? %>
+    var msg = "Are you sure to refetch?";
+  <% else %>
+    var msg = "Refetching will delete all of your annotations. Are you sure?";
+  <% end %>
+  if (confirm(msg)) {
+    $.post("/collections/<%=@collection.id%>/documents/<%=@document.pmid%>/refetch", {}, function() {location.reload();});
+  }
+}
+
+function pie_entry(offset, name, type) {
+  var el = $("#pie-importer table");
+  if (typeof offset != 'object') {
+    offset = [offset];
+  }
+
+  if (!type) {
+    type = 'Protein';
+  }
+
+  $("#pie-importer table").append("<tr> " +
+          "<td> " +
+          "  <input type='hidden' name='check[" + idx_pie_entry + "]' value='0'>" +
+          "  <input type='checkbox' name='check[" + idx_pie_entry + "]' checked value='1'> " +
+          "  <input type='hidden' name='offset[" + idx_pie_entry + "]' value='" + offset + "'> " +
+          "  <input type='hidden' name='name[" + idx_pie_entry + "]' value='" + escape(name) + "'> " +
+          "  <input type='hidden' name='type[" + idx_pie_entry + "]' value='" + escape(type) + "'> " +
+          "</td> " +
+          "<td style='word-break:break-all;'>" + offset + "</td><td>" + name.length + "</td> " +
+          "<td>" + name + "</td> " +
+          "<td>" + type + "</td> " +
+        "</tr>");
+  idx_pie_entry ++;
+}
+</script>
+
+<script>
+  $(function() {
+    jsonp("http://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpieentity.cgi?pmid=<%=@document.pmid%>&type=jsonp");
+  });
+</script>

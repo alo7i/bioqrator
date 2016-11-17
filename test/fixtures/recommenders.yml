@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  link: MyString
+  desc: MyString
+  collection_id: 1
+  type_str: MyString
+
+two:
+  name: MyString
+  link: MyString
+  desc: MyString
+  collection_id: 1
+  type_str: MyString

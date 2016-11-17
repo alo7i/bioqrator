@@ -1,0 +1,60 @@
+<%= form_for([@collection, @recommender], :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @recommender.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recommender.errors.count, "error") %> prohibited this recommender from being saved:</h2>
+
+      <ul>
+      <% @recommender.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name%>
+    </div>
+  </div>
+  <% 
+  examples = [
+    ['PubMed', "http://www.ncbi.nlm.nih.gov/pubmed/?term=$TERM"],
+    ['Gene Ontology', "http://amigo.geneontology.org/cgi-bin/amigo/search.cgi?search_query=$TERM&search_constraint=gp&action=new-search"],
+    ['BioGRID', "http://thebiogrid.org/search.php?search=$TERM&organism=all"],
+    ['OMIM', "http://www.ncbi.nlm.nih.gov/omim/?term=$TERM"]
+  ]
+  %>
+  <div class="control-group">
+    <%= f.label :link, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :link, :class => "span8", :placeholder => "http://yourlink?term=$TERM"%>
+      <span class="help-block">
+        Web link for searching annotations. '<b class="term">$TERM</b>' will be replaced with an annotation name. The followings are some examples.
+        <ul>
+          <% examples.each do |item| %>
+            <li style="margin-bottom:5px;">
+              <%=link_to_function "Test", "$('#recommender_name').val('#{item[0]}');$('#recommender_link').val('#{item[1]}');", :class => "btn btn-mini" %>
+              <b><%= item[0] %></b>:
+              <%=item[1].sub("$TERM", "<b class='term'>$TERM</b>").html_safe %>
+            </li>
+          <% end %>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Description", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :desc, :class => "span8", :rows => 3%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit :value => "Save", :class => "btn btn-primary" %>
+  </div>
+<% end %>
+<style>
+b.term {color:#936;}
+</style>
+
+  

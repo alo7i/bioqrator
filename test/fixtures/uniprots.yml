@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uniprot_id: MyString
+  entry_name: MyString
+  protein_names: MyText
+  gene_name: MyString
+  organism: MyString
+  length: 1
+
+two:
+  uniprot_id: MyString
+  entry_name: MyString
+  protein_names: MyText
+  gene_name: MyString
+  organism: MyString
+  length: 1

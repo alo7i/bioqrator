@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h2><%= @collection.name %></h2>
+</div>
+
+<div class="actions" style="margin-bottom:20px;">
+  <%= render :partial => "/collections/collection_buttons" %>
+</div>
+<%= render :partial => "/shared/collection_tab" %>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="types">
+
+    <div style="margin-bottom:10px;">
+      <%= link_to new_collection_recommender_path(@collection), :class => "btn btn-success"  do %>
+        <i class="fa fa-tags"></i>
+        New Recommender
+      <% end %>
+    </div>
+    <% if @collection.recommenders.blank? %>
+      <%= render :partial => "/collections/help_no_recommender" %>
+    <% else %>
+      <%= render :partial => "/shared/sortable" %>
+      <table class="table table-striped sortable">
+        <tr>
+          <th>Name</th>
+          <th>Link</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+        <% @collection.recommenders.each do |r| %>
+        <tr>
+          <td><%=r.name %></td>
+          <td><%=link_to r.link, r.link.sub("$TERM", "TERM") %></td>
+          <td><%=r.desc %></td>
+          <td>
+            <%= link_to edit_collection_recommender_path(@collection, r), :class => "btn btn-mini" do %>
+                <i class="fa fa-edit"></i> Edit
+            <% end %>
+            <%= link_to [@collection, r], method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-mini btn-danger" do %>
+                <i class="fa fa-times-circle"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+
+<%=render :partial => "/collections/search_document_dialog" %>
+<%=render :partial => "/collections/upload_bioc" %>
+

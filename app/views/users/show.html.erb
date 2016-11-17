@@ -1,0 +1,7 @@
+<div class="page-header">
+	<h2><%=@user.name_or_email %></h2>
+</div>
+<ul>
+  <li>Name : <%= @user.name %></li>
+  <li>Email : <%=link_to @user.email, "mailto:#{@user.email}" %></li>
+</ul>

@@ -1,0 +1,699 @@
+<div id="update-notice" style="display:none">
+  <div class="alert">
+    <i class="fa fa-warning-sign"></i>
+    <span id="update-date-pubmed"></span>: A copy of this document in Pubmed is updated on after your fetching. 
+    <% unless @document.update_date.nil? %> 
+    (<%=@document.update_date%>)
+    <% end %>
+    Do you want to refetch this?
+    <a href="#" onclick="refetch_document();return false;">Yes, refetch this</a>
+  </div>
+</div>
+
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection %> <span class="divider">/</span></li>
+  <li class="active"><%= @document.pmid%></li>
+</ul>
+
+<div>
+  <h2>
+    <%=@document.title%>
+
+    <%= link_to "http://www.ncbi.nlm.nih.gov/pubmed/#{@document.pmid}", :target => "_blank", :class => "btn btn-mini" do %>
+      <i class="fa fa-external-link"></i> PMID: <%=@document.pmid%>
+    <% end %>
+  <div class="pull-right">
+    <% unless @document.medline.nil? %>
+      <span class="label">
+        <%= @document.medline %>
+      </span>
+      
+    <% end %>
+    <% unless @document.ppi_score.nil? %>
+      <span class="label" title="PPI confidence score predicted by PIE the search" data-toggle="tooltip">
+        PIE score: <%= @document.ppi_score %>
+      </span>
+    <% end %>
+  </div>
+  </h2>
+  <div>
+    <span class="authors"><%= @document.au.gsub(/\n/,', ') %></span>,
+    <i class="source i"><%= @document.source %></i>
+  </div>
+</div>
+<%= render :partial => "document_buttons" %>
+<div class="row">
+  <div class="span6">
+    <i class="muted">Click a word or drag text for adding a new annotation.</i><br>
+    <% @document.passages.each do |passage| %>
+      <span class="label">
+          <%=passage.ptype%>
+          <span style="font-weight:normal; font-size:0.8em;color:#ccc;display:none">(<%=passage.offset%>)</span>
+      </span>
+      <div class="well">
+        <div class="passage" id="p_<%=passage.offset %>" data-offset="<%=passage.offset%>"><%=passage.ptext%></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="span6">
+    <div class="" id="import-annotation">
+    </div>
+    <div>
+      <ul class="nav nav-tabs" id="document-tab">
+        <li>
+          <%=link_to "#annotations", "data-toggle" => "tab" do %>
+            <i class="fa fa-comment-alt"></i>
+            Annotations
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#relations", "data-toggle" => "tab", :class => "relation-tab" do %>
+            <i class="fa fa-link"></i>
+            Relations
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#types", "data-toggle" => "tab", :class => "type-tab" do %>
+            <i class="fa fa-tags"></i>
+            Types
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane" id="annotations">
+        <%= render :partial => "annotation_tab" %>
+      </div>
+      <div class="tab-pane" id="relations">
+        <%= render :partial => "relation_tab" %>
+      </div>
+      <div class="tab-pane" id="types">
+        <% if @collection.entity_types.blank? %>
+          <div class="alert alert-info alert-block">
+            No Types yet.
+          </div>
+        <% else %>
+          <i class="muted">Click a type for highlighting in text.</i>
+          <%= render :partial => "/shared/sortable" %>
+          <div class="table-scrollable">
+            <table class="table table-striped sortable">
+              <tr>
+                <th>Name</th>
+                <th>Annotation</th>
+                <th>Relation</th>
+                <th></th>
+              </tr>
+              <% @collection.entity_types.each do |e| %>
+                <tr id="t_<%=e.id%>" class="type" data-type-id="<%=e.id%>" data-type="<%=e.name%>">
+                  <td><span class="type t_<%=e.name%>" style='background-color:transparent'><%= e.name%></span>
+                  <td>
+                    <% if e.for_entity %>
+                      <i class="fa fa-check"></i>
+                    <% else %>
+                      <i class="fa fa-check-empty"></i>
+                    <% end %>
+                  </td>
+                  <td>            
+                    <% if e.for_relation %>
+                      <i class="fa fa-check"></i>
+                    <% else %>
+                      <i class="fa fa-check-empty"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_collection_entity_type_path(@collection, e), :class => "" do %>
+                    <i class="fa fa-pencil"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+          <%= render :partial => "/shared/scrollable" %>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "document_bottom" %>
+
+<div id="entityRecommenderModal" class="modal hide fade draggable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Recommend:</h3>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <div class="pull-left">
+      <a href="" class="btn external-link" target="_blank">
+        <i class="fa fa-external-link"></i>
+        <span>Open</span>
+      </a>
+    </div>
+    <div class="pull-right">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
+</div>
+<%= render :partial => "selector_for_relation" %>
+
+<div id="annotationModal" class="modal hide fade draggable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Edit annotation:</h3>
+  </div>
+  <div class="modal-body">
+    <div class="recommends">
+      <div class="alert alert-info">
+        Found other annotations with the same name.
+        <table class="table table-stripped table-condensed table-hover "> 
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Text</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= form_tag("/collections/#{@collection.id}/documents/#{@document.pmid}/annotations", {:class => "form-horizontal", :method => :put}) do %>
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label">Text</label>
+          <div class="controls">
+            <input type="text" id="text" name="text" readonly>
+            <input type="hidden" name="_method" id="_method">
+
+            <div class="btn-group">
+              <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-magic"></i> Recommend
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <% EntityType::RECOMMENDER.each do |key, value| %>
+                  <li><a href="#" data-type="<%=key%>" class="entity_recommender"><%=value%></a></li>
+                <% end %>
+                <li class="divider"></li>
+                <% unless @collection.recommenders.blank? %>
+                  <% @collection.recommenders.each do |rec| %>
+                    <li>
+                      <%=link_to "", :data => {:link => rec.link} , :target => "_blank", :onclick => "$(this).attr('href', $(this).data('link').replace('$TERM', $('#annotationModal form #text').val()));return true;" do%>
+                        <i class="fa fa-external-link"></i>
+                        <%= rec.name %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                  <li class="divider"></li>
+                <% end %>
+                <li>
+                  <%=link_to collection_recommenders_path(@collection) do %>
+                     <i class="fa fa-cog"></i> Add New Recommender
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <br>
+            <div class="btn_representative_name_edit">
+              <a href="#"><i class="fa fa-edit"></i> Need a different representative name? </a>
+            </div>
+          </div>
+        </div>
+        <div class="control-group representative_name_edit">
+          <label class="control-label">Representative Name</label>
+          <div class="controls">
+            <input type="text" id="representative_name" name="representative_name"> 
+            <a href="#" onclick="toggleRepresentativeNameEdit(false);return false;" class="link-danger"><i class="fa fa-times-circle"></i></a>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Annotation ID</label>
+          <div class="controls">
+            <input type="text" id="aid" name="aid"> <i class="help">Should be unique</i>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Type</label>
+          <div class="controls">
+            <%=select_tag "type", options_for_select(@collection.e_entity_types.map{|e| [e.name, e.name]}), :class => "input-large" %>
+            <%=link_to new_collection_entity_type_path(@collection), :class => "btn btn-mini btn-warning", :title => "New Type" do %>
+              <i class="fa fa-cogs"></i>
+            <% end %> 
+          </div>
+        </div>
+        <div class="control-group hide-for-update">
+          <label class="control-label">Location</label>
+          <div class="controls">
+            <input type="text" id="offset" name="offset" readonly class="input-mini">
+            <input type="text" id="length" name="length" readonly class="input-mini">
+            <span id="selectedText"></span>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Additional Information
+          <button type="button" class="btn btn-mini btn-success for_tooltip" onclick="manualEditEntity('EntrezGene');" title="Manual Input for EntrezGene" data-toggle="tooltip">
+            E
+          </button>
+          <button type="button" class="btn btn-mini btn-success for_tooltip" onclick="manualEditEntity('UniProtKB');" title="Manual Input for UniProtKB" data-toggle="tooltip">
+            U
+          </button>
+        </legend>
+        <ul class="additional-information">
+        </ul>
+        <div class="pull-right">
+          <!--<button type="button" class="btn btn-mini btn-success" onclick="manualEditEntity('EntrezGene');">
+            <i class='fa fa-edit-sign'></i> Add/Edit EntrezGene Info.
+          </button>
+          <button type="button" class="btn btn-mini btn-success" onclick="manualEditEntity('UniProtKB');">
+            <i class='fa fa-edit-sign'></i> Add/Edit UniProtKB Info.
+          </button>-->
+          <button type="button" class="btn btn-info btn-mini" onclick="addAdditionalInformation('annotation', '','',null);">
+            <i class='fa fa-plus-sign'></i> Add New Information Line
+          </button>
+        </div>
+      </fieldset>
+      
+      <fieldset class='annotation-locations-div'>
+        <legend>Location (offset:length)
+          <!--a href="" class="btn add-all btn-mini" data-confirm="Are you sure?"><i class="fa fa-search"></i> Search and Add all Occurences of the Text</a-->
+
+        </legend>
+        <ul class="annotation-locations">
+        </ul>
+      </fieldset>
+      <fieldset class="find-all-div">
+        <label class="checkbox" style='font-weight:bold;'>
+          <input type="checkbox" name="find_all"> Find and add all occurrences of '<span class='text'></span>' in the document.
+        </label>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-left">
+      <%= link_to "", method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger" do %>
+        Delete
+      <% end %>
+    </div>
+    <div class="pull-right">
+      <button class="btn closeBtn" data-dismiss="modal" aria-hidden="true"><i class="fa fa-chevron-left"></i> Back</button>
+      <button class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>
+
+<div id="relationModal" class="modal hide fade draggable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Edit relation:</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_tag("/collections/#{@collection.id}/documents/#{@document.pmid}/relations", {:class => "form-horizontal", :method => :put}) do %>
+      <div class="control-group">
+        <label class="control-label">Relation ID</label>
+        <div class="controls">
+          <input type="text" id="rid" name="rid"> <i class="help">Should be unique</i>
+          <span class="help-block">
+          </span>
+          <input type="hidden" name="_method" id="_method">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Type</label>
+        <div class="controls">
+          <%=select_tag "type", options_for_select(@collection.r_entity_types.map{|e| [e.name, e.name]}), :class => "input-large"%>
+          <%=link_to new_collection_entity_type_path(@collection), :class => "btn btn-mini btn-warning", :title => "New Type" do %>
+            <i class="fa fa-cogs"></i>
+          <% end %> 
+        </div>
+      </div>
+      <fieldset>
+        <legend>References</legend>
+        <ol>
+        </ol>
+        <div class=" pull-right">
+          <%= link_to "#annotationSelector", :class => "btn btn-mini btn-danger", :"data-toggle" => "modal" do %>
+            <i class="fa fa-plus-sign"></i> Add Annotation 
+          <% end %>
+          <%= link_to "#relationSelector", :class => "btn btn-mini btn-success", :"data-toggle" => "modal" do %>
+            <i class="fa fa-plus-sign"></i> Add Relation 
+          <% end %>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Additional Information</legend>
+        <ul class="additional-information">
+        </ul>
+        <button type="button" class="pull-right btn btn-info btn-mini" onclick="addAdditionalInformation('relation', '','',null);">
+          <i class='fa fa-plus-sign'></i> Add New Information Line
+        </button>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <div class="pull-left">
+      <%= link_to "", method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger" do %>
+        Delete
+      <% end %>
+    </div>
+    <div class="pull-right">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>
+<div id="locationSelector" class="modal hide fade draggable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><i class="fa fa-zoom-in"></i> Select Text</h3>
+  </div>
+  <div class="modal-body">
+    <div class="text well" data-offset="6" data-length="26">abcdefghijklmnopqrstuvwxyz</div>
+    <div class="text-real hide" data-offset="6" data-length="26">abcdefghijklmnopqrstuvwxyz</div>
+    <div style="background-color:#D9EEFA;color:#000;padding:10px;border:1px solid #ddd">
+      <h4>Range Selector: <small>Select an exact location of the text</small></h4>
+      <div style="margin-left:20px;">
+        <div class="slider-div">
+          <span class="start">6</span>
+          <span id="rangeSliderDiv" style="margin:0 15px"><span id="rangeSlider"></span></span>
+          <span class="end">26</span>
+        </div>
+        <form class="form-inline">
+          <div class="control-group">
+            <b>Current Selection : </b>
+            <label class="control-label">Offset</label>
+            <input id="loc_offset" type="text" value="10" class="span1" readonly style="margin-right:20px;">
+            <label class="control-label">Length</label>
+            <input id="loc_length" type="text" value="10" class="span1" readonly>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4>Selection Recommender: <small>Click a button below to choose a different text.</small></h4>
+      <table class="table table-stripped table-condensed table-hover recommends">
+        <thead>
+          <tr>
+            <th>Text</th>
+            <th>Offset</th>
+            <th>Length</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-primary" id="locSelectBtn">Next <i class='fa fa-chevron-right'></i></button>
+  </div>
+</div>
+<style>
+  #locationSelector .text {
+    font-size:1.2em;
+    ling-height:200%;
+    word-break: break-all;
+  }
+  #locationSelector .slider-div {margin-bottom:10px;}
+  #locationSelector .text span{
+    background:#ff0;
+    font-weight:bold;
+    font-size:1.2em;
+    text-decoration:underline;
+    word-break: break-all;
+  }
+  #locationSelector .slider-div {
+  }
+  #locationSelector #rangeSlider {
+    margin:0 20px;
+    width: 380px;
+  }
+
+  #locationSelector .slider.slider-horizontal .slider-selection {
+    background:#5FBFF5;
+  }
+</style>
+<script>
+  function setDeleteAnnotationUrl(id) {
+    $("#annotationModal .btn-danger").attr("href", "/collections/<%=@collection.id%>/documents/<%=@document.pmid%>/annotations/" + id);
+  }
+  function setDeleteRelationUrl(id) {
+    $("#relationModal .btn-danger").attr("href", "/collections/<%=@collection.id%>/documents/<%=@document.pmid%>/relations/" + id);
+  }
+
+  $(function () {
+    $("#annotationModal .btn_representative_name_edit").click(function() {
+      $("#annotationModal .btn_representative_name_edit").hide();
+      $("#annotationModal .representative_name_edit").slideDown();
+      $("#representative_name").focus();
+    });
+    $(".docSelector").change(function() {
+      window.location="/collections/<%=@collection.id%>/documents/" + $(".docSelector").val();
+    });
+    $('#doneChange').on('switch-change', function (e, data) {
+        
+    });
+    $("#locSelectBtn").click(function() {
+      var t = $("#locationSelector .text span").text();
+      var o = $("#loc_offset").val();
+      var l = $("#loc_length").val();
+      showAnnotation(null, "", "", "", "", "", null, null, true, {text:t, offset:o, length:l});
+    }); 
+
+    $("a.entity_recommender").click(function() {
+      var el = $(this);
+      var key = $(this).data("type");
+      var value = $("#annotationModal input#text").val();
+      var url = {"entrez": "http://www.ncbi.nlm.nih.gov/gene/?term=", "uniprot": "http://www.uniprot.org/uniprot/?sort=score&query="};
+
+      $("#entityRecommenderModal h3").html(el.text() + " Selector");
+      $("#entityRecommenderModal a.external-link span").text("Open "+ el.text());
+      $("#entityRecommenderModal a.external-link").attr("href", url[key] + value);
+      $("#entityRecommenderModal div.modal-body").html("<div style='text-align:center;padding:100px 0;'><i class='fa fa-spinner fa-spin fa-4x '></i><br>Connecting " + el.text() + "...<br><span style='color:#aaa'>The query result will be stored in the system <br>for next queries</span></div>")
+
+      $.ajax({
+        url: "/api/"+key+"?term="+value,
+        type: "GET", 
+        timeout: 20000,
+        success: function(ret) {
+          $("#entityRecommenderModal div.modal-body").html(ret);
+        }, 
+        error: function(jqXHR, textStatus) {
+          alert("Error: please try again later. (" + textStatus + ")");
+          $("#entityRecommenderModal").modal('hide');
+        }
+
+      })
+      $("#entityRecommenderModal").modal('show');
+      return false;
+    });
+
+    $(".passage").mouseup(function (e) {   
+      var selection = getSelected();
+      if (selection) {
+        var range = selection.getRangeAt(0);
+
+        if (range.startContainer != range.endContainer)
+          return;
+        var el = $(range.startContainer.parentElement || range.startContainer.parentNode)
+        if (el.hasClass("annotation"))
+          return;
+
+        node = range.startContainer;
+
+        var length = range.endOffset - range.startOffset;
+        if (length >= 0) {
+          recommends = getRecommendText(getPreviousOffset(range, this), range);
+          showLocationSelector(recommends, range, getPreviousOffset(range, this));
+        }
+      }
+    });
+    <% if @tab.nil? || @tab == "annotaton" %>
+      $("#document-tab a:first").tab('show');
+    <% elsif @tab == "relation" %>
+      $("#document-tab a.relation-tab").tab('show');
+    <% end %>
+
+    $("#annotationModal .btn-primary").click(function() {
+      var form = $("#annotationModal form");
+      var btn = $(this);
+
+      // if (form.find("select#type").val() == 0) {
+      //   alert("Please select type");
+      //   form.find("select#type").focus();
+      //   return;
+      // }
+      if (btn.text() == "Update") {
+        // Update
+        form.attr("action", form.attr("action") + "/" + form.data("id"));
+        $("#annotationModal #_method").val("PUT");
+      } else {
+        $("#annotationModal #_method").val("POST");
+      }
+      btn.text("Processing...").prop("disabled", true).addClass("ui-state-disabled");
+      form.submit();
+      return;
+    });
+
+    $("#pie-importer .btn-primary").click(function() {
+      var form = $("#pie-importer form");
+      var btn = $(this);
+      btn.text("Processing...").prop("disabled", true).addClass("ui-state-disabled");
+      form.submit();
+      return;
+    });
+
+    $("#relationModal .btn-primary").click(function() {
+      var form = $("#relationModal form");
+      // var ref_order = 0;
+      // $("#relationModal ol li input.order").each(function() {
+      //   ref_order ++;
+      //   $(this).val(ref_order);
+      // });
+      var btn = $(this);
+
+      // if (form.find("select#type").val() == 0) {
+      //   alert("Please select type");
+      //   form.find("select#type").focus();
+      //   return;
+      // }
+      if (btn.text() == "Update") {
+        // Update
+        form.attr("action", form.attr("action") + "/" + form.data("id"));
+        $("#relationModal #_method").val("PUT");
+      } else {
+        $("#relationModal #_method").val("POST");
+      }
+      btn.text("Processing...").prop("disabled", true).addClass("ui-state-disabled");
+      form.submit();
+      return;
+    });
+    <%- 
+    ranges = []
+    @document.annotations.each do |a| 
+      a.locations.each do |l|
+        p = @document.get_passage_from_offset(l.offset)
+        unless l.has_overlap?(ranges)
+          -%>
+          add_annotation(<%=a.id%>, <%=p.offset%>, '<%=escape_javascript a.node_id%>', 
+            <%=l.offset%>, <%=l.length%>, 
+            '<%=escape_javascript a.type_str%>', '<%=escape_javascript a.desc%>', '<%=escape_javascript a.representative_name%>');
+          <%-
+          ranges << [l.offset, l.length]
+        end
+      end 
+    end 
+    -%> 
+
+    $("span.annotation").click(function() {
+      var e = $(this);
+      showAnnotation(e.data("id"), e.text(), e.data("representative"), e.data("a-id"), e.data("type"), e.data("key"), e.data("offset"));
+      return false;
+    });
+
+    $("#annotations a.edit-btn").click(function() {
+      var tr = $(this).parents("tr");
+      var e = $(tr);
+      var text = e.find("span.text").text();
+      showAnnotation(e.data("id"), e.data("text"), e.data("representative"), e.data("a-id"), e.data("type"), text[4]);
+      return false;
+    });
+
+    $("#relations a.edit-btn").click(function() {
+      var tr = $(this).parents("tr");
+      var e = $(tr);
+      showRelation(e.data("id"), e.data("r-id"), e.data("type"), tr.find("span.ref"));
+      return false;
+    });
+
+    $("tr.annotation_tr").click (function(){
+      var e = $(this);
+      if (e.hasClass("selected")) {
+        clearAllHighlight();
+      } else {
+        clearAllHighlight();
+        e.addClass("selected");
+
+        var aid = e.data("a-id");
+        $("span#a_"+aid).addClass("highlight");
+      }
+    });
+
+    $("tr.relation").click (function(){
+      var e = $(this);
+
+      if (e.hasClass("selected")) {
+        clearAllHighlight();
+      } else {
+        clearAllHighlight();
+        e.addClass("selected");
+
+        var i = 0;
+        e.find("span.ref").each(function() {
+          var aid = $(this).data("id");
+          $(this).addClass("highlight" + i);
+          $("span#a_"+aid).addClass("highlight" + i);
+          $("tr#a_"+aid).addClass("highlight" + i);
+          i = (i + 1) % 5;
+        });
+      }
+    });
+    $("tr.type").click (function(){
+      var e = $(this);
+      if (e.hasClass("selected")) {
+        clearAllHighlight();
+      } else {
+        clearAllHighlight();
+        e.addClass("selected");
+
+        $("span.annotation").each(function() {
+          var a = $(this);
+          if (a.data("type") == e.data("type")) {
+            a.addClass("highlight");
+          }
+        });
+        $("tr.relation").each(function() {
+          var a = $(this);
+          if (a.data("type") == e.data("type")) {
+            a.addClass("highlight");
+          }
+        });
+      }
+    });
+
+    $("span.annotation").tooltip({html:true});
+    $(".for_tooltip").tooltip({html:true});
+
+    $(".modal.draggable").draggable({
+      handle: ".modal-header",
+      containment: "body"
+    });
+  });
+
+</script>
+<style type="text/css">
+ 
+  <% 
+  colors = ["#332EC7", "#C60070", "#332E87", "#A64400", "#137D00", "#690DC1", "#334455", "#C60070", "#a64d79"]
+
+  i = 0
+  @collection.entity_types.each do |t| 
+    %>
+    span.a_<%=t.name%>, span.t_<%=t.name%> {
+      color: <%=colors[i % colors.size ]%>;
+    }
+    <% 
+    i += 1 
+  end 
+  %>
+
+</style>

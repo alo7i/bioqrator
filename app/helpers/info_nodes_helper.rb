@@ -1,0 +1,2 @@
+module InfoNodesHelper
+end

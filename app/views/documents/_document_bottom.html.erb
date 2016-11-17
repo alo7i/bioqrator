@@ -1,0 +1,19 @@
+<div class="row" style="margin-bottom:5px;">
+  <div class="span12">
+    <div style="background:#444;color:#fff;padding:9px 9px 0">
+      Quick Link: 
+      <select class="docSelector span10" >
+        <% @collection.documents.each do |c| %>
+          <option value="<%=c.pmid%>" <%='selected' if c.pmid == @document.pmid %> >
+            <% if c.done? %>
+              &#9632;
+            <% else %>
+              &#9633;
+            <% end %>
+            [<%=c.pmid%>] <%=c.title%>
+          </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pie_entity_id: 1
+  offset: 1
+  length: 1
+
+two:
+  pie_entity_id: 1
+  offset: 1
+  length: 1

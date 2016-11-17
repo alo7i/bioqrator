@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  key: MyString
+  node_type: MyString
+  collection_id: 1
+  document_id: 1
+  passage_id: 1
+  node_id: 1
+
+two:
+  title: MyString
+  key: MyString
+  node_type: MyString
+  collection_id: 1
+  document_id: 1
+  passage_id: 1
+  node_id: 1

@@ -1,0 +1,4 @@
+<% @new_documents.each do |doc| %>
+	<%=render :partial => "/documents/brief_document", :locals => {:document => doc} %>
+  <%= doc.inspect %>
+<% end unless @new_documents.nil? %>

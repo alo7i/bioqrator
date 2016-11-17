@@ -1,0 +1,12 @@
+<ul class="breadcrumb">
+  <li>Collection: <%= link_to @collection.name, @collection %> <span class="divider">/</span></li>
+  <li class="active">New Type</li>
+</ul>
+
+<div class="page-header">
+	<h1>New Type</h1>
+</div>
+
+<%= render 'form' %>
+
+<button onclick="history.back();" class="btn">Back</button>

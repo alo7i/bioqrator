@@ -1,0 +1,12 @@
+<!ELEMENT collection ( source, date, key, document+ ) >
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT key (#PCDATA)>
+
+<!ELEMENT document ( id, passage+ ) >
+<!ELEMENT id (#PCDATA)>
+
+<!ELEMENT passage ( type, offset, text ) >
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT offset (#PCDATA)>
+<!ELEMENT text (#PCDATA)>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pmid: MyString
+  score: 1.5
+  save_query_cache_id: 1
+
+two:
+  pmid: MyString
+  score: 1.5
+  save_query_cache_id: 1

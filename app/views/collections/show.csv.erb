@@ -1,0 +1,7 @@
+<%= ["pmid", "type","id", "entity_type", "text", "location/reference", "infon"].to_csv -%>
+<%- @documents.each do |d| -%>
+<%= [d.pmid, nil, nil, nil, nil, nil, nil].to_csv if d.nodes.empty? -%>
+<%- d.nodes.order("node_type").each do |a| -%>
+<%= a.to_csv -%>
+<%- end -%>
+<%- end -%>

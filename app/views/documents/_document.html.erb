@@ -1,0 +1,84 @@
+<% 
+  checkbox = true if checkbox.nil?
+  no = nil if no.nil?
+  _class = ["item"]
+  _class << "item_checkbox" if checkbox
+  _class << "item_positive" if @collection.positive?(document.pmid)
+  _class << "item_negative" if @collection.negative?(document.pmid)
+
+
+  if !document.ppi_score.nil?  
+    score = document.ppi_score
+  elsif !pie_score.nil? 
+    score = pie_score
+  else
+    score = nil
+  end
+%>
+<div class="<%= _class.join(' ')%>" id="pmid-<%=document.pmid%>">
+  <% if checkbox %>
+    <input type="checkbox" id='chk-<%=document.pmid%>' data-score='<%=score%>' class='checkbox' style="margin-left:-20px;margin-right:4px;" name="pmid[]" value="<%=document.pmid %>">
+  <% end %>
+  <% unless no.nil? %>
+    <span class="no"><%=no%></span>
+  <% end %>
+  <span class="title">
+    <%=link_to_if @collection.positive?(document.pmid) || document.instance_of?(Document), document.title, "/collections/#{@collection.id}/documents/#{document.pmid}" %>
+  </span><br/>
+
+  <% if !document.authors.nil? %>
+    <span class="authors"><%= document.authors %></span><br/>
+  <% elsif !document.au.nil? %>
+    <span class="authors"><%= document.au.gsub(/\n/,', ') %></span><br/>
+  <% end %>
+  <span class="source"><%= document.source %></span><br/>
+  <div>
+    <%= link_to "http://www.ncbi.nlm.nih.gov/pubmed/#{document.pmid}", :target => "_blank", :class => "btn btn-mini" do %>
+      <i class="fa-external-link"></i> PMID: <%=document.pmid%>
+    <% end %>
+    <% if !document.abstract.nil? && document.abstract.strip.size > 0 %>
+      <button class="btn-ab btn btn-mini" onclick="$(this).parents('div.item').children('blockquote').toggle();">
+        <i class="fa-zoom-in"></i> Abstract
+      </button>
+    <% end %>
+    <% if checkbox %>
+      <% if _class.include?("item_positive") %>
+        <span class="badge badge-success">
+          <i class="fa-thumbs-up"></i> 
+          <span>Added in Collection</span>
+        </span>
+      <% elsif _class.include?("item_negative") %>
+        <span class="badge badge-important ">
+          <i class="fa-thumbs-down"></i> 
+          <span>Marked as Irrelevant</span>
+        </span>
+        <button class="btn btn-mini" onclick="unmarkIrrelevant(this, <%=document.pmid%>);">
+          <i class="fa-undo"></i>
+          <span>Undo Mark</span>
+        </button>
+      <% else %>
+        <button class="btn-mini btn btn-info add-document-btn" onclick="postPMIDs([<%=document.pmid%>]);" >
+          <i class="fa-save"></i> 
+          <span>Add to Collection</span>
+        </button>
+        <button class="btn btn-danger btn-mini" onclick="markIrrelevant(this, <%=document.pmid%>);" >
+          <i class="fa-thumbs-down"></i>
+          <span>Mark as Irrelevant</span>
+        </button>
+      <% end %>
+    <% end %>
+    <span class="label" title="PPI confidence score predicted by PIE the search" data-toggle='tooltip'>
+      PIE Score: 
+      <span class='ppi-score' id='score-<%=document.pmid%>'>
+        <% if score.nil? %>
+          <i class="fa fa-spinner fa-spin"></i>
+        <% else %>
+          <%= score%> 
+        <% end %>
+      </span>
+    </span>
+  </div>
+  <blockquote class="abstract" style="display:none; margin:5px 0 0 0px;">
+    <%= document.abstract %>
+  </blockquote>
+</div>

@@ -1,0 +1,110 @@
+
+<div class="page-header">
+  <h1>About</h1>
+</div>
+<div class="row">
+  <div class="span6">
+    <h3>Team</h3>
+
+    <div class="staff_list">
+      <div class="staff">
+        <%=image_tag "dongseop.png" %>
+        <span class="name">Dongseop Kwon, PhD</span>
+        <div class="desc">Associate Professor,<br>
+          Department of Computer Engineering, <br>
+          Myongji University, South Korea</div>
+        <div class="clear"></div>
+      </div>
+      
+      <div class="staff">
+        <%=image_tag "sunkim.jpg" %>
+        <span class="name">Sun Kim, PhD</span>
+        <div class="desc">Research Fellow,<br>
+          National Center for Biotechnology Information (NCBI),<br>
+          National Institutes of Health (NIH), USA</div>
+        <div class="clear"></div>
+      </div>
+      
+      <div class="staff">
+        <%=image_tag "sooyong.png" %>
+        <span class="name">Soo-Yong Shin, PhD</span>
+        <div class="desc">Research Assistant Professor, <br>
+          Department of Biomedical Informatics, <br>
+          Asan Medical Center, South Korea</div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="staff">
+        <%=image_tag "wilbur.png" %>
+        <span class="name">W. John Wilbur, MD, PhD</span>
+        <div class="desc">Senior Investigator, <br>
+          National Center for Biotechnology Information (NCBI),<br>
+          National Institutes of Health (NIH), USA</div>
+        <div class="clear"></div>
+      </div>
+     
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="span6">
+    <h3>Publication</h3>
+    <ul>
+      <li>
+        Dongseop Kwon, Sun Kim, Soo-Yong Shin, Andrew Chatr-aryamontri and W. John Wilbur, 
+        <%=link_to "Assisting manual literature curation for protein–protein interactions using BioQRator", "http://database.oxfordjournals.org/content/2014/bau067" %>
+         Database (oxford) 2014, doi:10.1093/database/bau067, July 22, 2014. 
+      </li>
+      <li>Dongseop Kwon, Sun Kim, Soo-Yong Shin and W. John Wilbur, 
+        <%=link_to "BioQRator: a web-based interactive biomedical literature curating system", "http://www.biocreative.org/media/store/files/2013/bc4_v1_33.pdf" %>, 
+        Proceedings of the BioCreative IV Workshop, Washington, DC, Vol. 1, pp. 241-246, 2013.
+      </li>
+    </ul>
+    <hr>
+    <h3>Acknowledgements</h3>
+    <ul>
+      <li>Dongseop Kwon were supported by the Basic Science Research Program through the National 
+      Research Foundation of Korea (NRF) funded by the Ministry of Education 
+      (2012R1A1A2044389 and 2011-0022437). 
+      </li>
+      <li>Soo-Yong Shin were supported by the Basic Science Research Program through the National 
+      Research Foundation of Korea (NRF) funded by the Ministry of Education 
+      (2012R1A1A2002804). 
+      </li>
+      <li>
+      Sun Kim and W. John Wilbur 
+      were supported by Intramural Research Program of the NIH, National Library of Medicine. 
+      </li>
+    </ul>
+  </div>
+</div>
+
+   <style>
+    div.staff_list{
+      margin: 0 0;
+    }
+    div.staff{
+      margin:0 20px 30px 10px;
+      
+    }
+    div.paper_list {
+      margin: 10px 0 10px 25px;
+    }
+    div.staff img { float:left; border:1px solid #999; width:70px;height:70px;}
+    div.paper > img { float:left; border:1px solid #999; width:70px;margin-right:10px;}
+    div.paper div.desc {
+      margin: 5px;
+      padding:10px;
+    }
+
+    div.staff span.name {
+      color: #054B7E;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    div.staff div.desc {
+      margin-left:85px;
+      line-height:125%;
+    }
+
+  </style>

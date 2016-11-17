@@ -1,0 +1,106 @@
+<div class="page-header">
+  <h2><%= @collection.name %></h2>
+</div>
+
+<div class="actions" style="margin-bottom:20px;">
+  <%= render :partial => "collection_buttons" %>
+</div>
+<%= render :partial => "/shared/collection_tab" %>
+
+<div class="tab-content">
+  <div id="documents" class="tab-pane active">
+    <div style="margin-bottom:10px;">
+      <%= link_to collection_save_queries_path(@collection), :class => "btn btn-success", :role => "button", "data-toggle" => "modal" do %>
+        <i class="fa fa-magic"></i>
+        Smart Document Finder
+      <% end %>
+
+      <%= link_to "#queryModal", :class => "btn ", :role => "button", "data-toggle" => "modal" do %>
+        <i class="fa fa-plus-sign"></i>
+        Add Documents by Query / PMID
+      <% end %>
+    </div>
+    <% if @collection.entity_types.empty? %>
+      <%= render :partial => "help_no_type" %>
+    <% end %>
+    <% if @documents.blank? %>
+      <%= render :partial => "help_no_document" %>
+    <% else %>
+      <div class="document-list">
+        <%= render :partial => "/shared/sortable" %>
+        <table class="table table-striped sortable">
+          <tr>
+            <th class="sorttable_nosort"><input type="checkbox" id='chk-all' class='checkbox'></th>
+            <th>PMID</th>
+            <th width="70%">Title</th>
+            <th class="sorttable_numeric sorttable_sorted_reverse" >
+              <span data-toggle="tooltip" class="for_tooltip" title="PPI confidence score predicted by PIE the search">
+                PIE Score
+              </span>
+              <span id="sorttable_sortrevind">&nbsp;<i class="fa fa-caret-up"></i></span>
+            </th>
+            <th>Year</th>
+            <th><span data-toggle="tooltip" class="for_tooltip" title="Number of Annotations">Annot.</span></th> 
+            <th><span data-toggle="tooltip" class="for_tooltip" title="Number of Relations">Rel.</span></th> 
+            <th> </th>
+          </tr>
+          <% @documents.each do |d| %>
+            <% d.fetch if d.medline.nil? %>
+            <tr class="document_line <%='done' if d.done?%>">
+              <td>
+                <input type="checkbox" id='chk-<%=d.pmid%>' class='checkbox doc-checkbox' name="pmid[]" value="<%=d.pmid %>">
+              </td>
+              <td><%=link_to d.pmid, "/collections/#{@collection.id}/documents/#{d.pmid}" %>
+                <% if d.done? %>
+                  <br><span class="badge badge-success"><i class="fa fa-ok"></i> Done</span>
+                <% end %>
+                <% unless d.curatable? %>
+                  <br><span class="badge badge-important for_tooltip" data-toggle="tooltip" title="Not Curatable"><i class="fa fa-thumbs-down"></i> N/C</span>
+                <% end %>
+
+              </td>
+              <td>
+                <%=render :partial => "/documents/document", :locals => {:document => d, :checkbox => false, :pie_score => nil } %>
+              </td>
+              <td sorttable_customkey="<%= d.ppi_score.nil? ? -9999.999 : d.ppi_score%>"><%= d.ppi_score %></td>
+              <td><%= d.year %></td>
+              <td><%= d.annotations.size %></td>
+              <td><%= d.relations.size %></td>
+              <td>
+                <%= link_to [@collection, d], method: :delete, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+                <i class="fa fa-times-circle"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%=link_to "Back", collections_url, :class => "btn" %>
+
+<script>
+$(function() {
+  $("#chk-all").click(function() {
+    var el = $(this);
+    if (el.prop("checked")) {
+      $(".doc-checkbox").prop("checked", true);
+    } else {
+      $(".doc-checkbox").prop("checked", false);
+    }
+  });
+
+  $(".doc-checkbox").click(function() {
+    var el = $(this);
+    if (!el.prop("checked")) {
+      $("#chk-all").prop("checked", false);
+    }
+  });
+  $(".for_tooltip").tooltip({html:true});
+
+});
+</script>
+<%=render :partial => "/collections/search_document_dialog" %>
+<%=render :partial => "/collections/upload_bioc" %>

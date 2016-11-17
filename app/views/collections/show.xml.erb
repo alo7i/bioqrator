@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source><%= @collection.source %></source>
+  <date><%= @collection.s_date.strftime("%Y%m%d") %></date>
+  <key><%= @collection.key%></key>
+  <% @collection.info_nodes.each do |n| %>
+  <% next if ["BQ_URL", "BQ_NAME"].include?(n.key) %>
+  <infon key="<%=n.key%>"><%= n.title %></infon>
+  <% end %>
+  <infon key="BQ_URL">http://www.bioqrator.org</infon>
+  <infon key="BQ_NAME"><%= @collection.name %></infon>
+  <% @documents.each do |d| %>
+  <document>
+    <id><%= d.pmid %></id>
+    <% d.info_nodes.each do |n| %>
+    <% next if ["BQ_FROM", "BQ_PIESCORE", "BQ_PPISCORE", "BQ_DONE", "BQ_CURATABLE"].include?(n.key) %>
+    <infon key="<%=n.key%>"><%= n.title %></infon>
+    <% end %>
+    <infon key="BQ_FROM"><%=d.medline%></infon>
+    <% unless d.ppi_score.nil? %>
+    <infon key="BQ_PIESCORE"><%=d.ppi_score%></infon>
+    <% end %>
+    <% if d.done? %>
+    <infon key="BQ_DONE">YES</infon>
+    <% else %>
+    <infon key="BQ_DONE">NO</infon>
+    <% end %>    
+    <% if d.curatable? %>
+    <infon key="BQ_CURATABLE">YES</infon>
+    <% else %>
+    <infon key="BQ_CURATABLE">NO</infon>
+    <% end %>    
+    <% d.passages.each do |p| %>
+    <passage>
+      <% unless p.passage_type.nil? %>
+      <infon key="type"><%= p.passage_type %></infon>
+      <% end %>
+      <% p.info_nodes.each do |n| %>
+      <% next if n.key == "type" %>
+      <infon key="<%=n.key%>"><%= n.title %></infon>
+      <% end %>
+      <offset><%= p.offset %></offset>
+      <% unless p.ptext.nil? %>
+      <text><%= p.ptext %></text>
+      <% end %>
+      <% p.annotations.each do |a| %>
+      <annotation id="<%=a.node_id%>">
+        <% logger.debug a.inspect %>
+        <% unless a.representative_name.nil? %>
+        <infon key="representative_name"><%= a.representative_name %></infon>
+        <% end %>
+        <% unless a.entity_type.nil? %>
+        <infon key="type"><%= a.entity_type %></infon>
+        <% end %>
+        <% a.info_nodes.each do |n| %>
+        <% next if n.key == "type" %>
+        <infon key="<%=n.key%>"><%= n.title %></infon>
+        <% end %>
+        <% a.locations.each do |l| %>
+        <location offset="<%=l.offset%>" length="<%=l.length%>"/>
+        <% end %>
+        <text><%= a.node_text %></text>
+      </annotation>
+      <% end %>
+    </passage>
+    <% end %>
+    <% d.relations.each do |r| %>
+    <relation id="<%=r.node_id%>">
+      <% unless r.entity_type.nil? %>
+      <infon key="type"><%= r.entity_type %></infon>
+      <% end %>
+      <% r.info_nodes.each do |n| %>
+      <% next if n.key == "type" %>
+      <infon key="<%=n.key%>"><%= n.title %></infon>
+      <% end %>
+      <% r.references.each do |p| %>
+      <node refid="<%=p.ref_id%>" role="<%=p.role%>"/>
+      <% end %>
+    </relation>
+    <% end %>
+  </document>
+  <% end %>
+</collection>
+
+

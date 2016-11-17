@@ -1,0 +1,32 @@
+<%= form_for([@collection, @entity_type], :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @entity_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity_type.errors.count, "error") %> prohibited this entity_type from being saved:</h2>
+
+      <ul>
+      <% @entity_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name%>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <label class="for_entity">
+        <%= f.check_box :for_entity%> Available for annotations
+      </label>
+      <label class="for_relation">
+        <%= f.check_box :for_relation %> Available for relations
+      </label>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :value => "Save", :class => "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ref_id: MyString
+  role: MyString
+  node_id: 1
+  order_no: 1
+
+two:
+  ref_id: MyString
+  role: MyString
+  node_id: 1
+  order_no: 1

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pmid: MyString
+  collection_id: MyString
+
+two:
+  pmid: MyString
+  collection_id: MyString

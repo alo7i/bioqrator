@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  term: MyString
+  uniprot_id: MyString
+  order_no: 1
+
+two:
+  term: MyString
+  uniprot_id: MyString
+  order_no: 1

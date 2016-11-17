@@ -1,0 +1,62 @@
+<div class="modal hide fade" id="queryModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3>Add Documents</h3>
+    </div>
+    <div class="modal-body">
+        <%= form_tag(new_collection_document_path(@collection), :method => "get", :style => "margin:0", :class => "form-inline") do %>
+          <h4>Search Documents</h4>
+          <div style="margin-left:20px;">
+            Publication Date in <div id="reportrange" class="range-picker">
+                <i class="fa fa-calendar fa-lg"></i>
+                <span><%=(Time.now - 1.month).strftime("%Y/%m/%d") %> ~ <%=Time.now.strftime("%Y/%m/%d") %></span> <b class="caret"></b>
+            </div>
+            <input type="hidden" name="date" value="" id="range-date">
+            <br>
+
+            <input type="text" name="term" value="<%=params[:term] %>" autofocus="true" class="span4" placeholder="Enter a query">
+            <input type="submit" value="Query" class="btn btn-success">
+            <br>
+            <%= render :partial => "/collections/query_tip" %>
+          </div>
+        <% end %>
+      <hr>
+        <%= form_tag(new_collection_document_path(@collection), :multipart => true, :style => "margin:0", :class => "form-inline", id: "form_pmid_upload") do %>
+          <h4>Upload PMID List from File</h4>
+          <div style="margin-left:20px;">
+            <input type="file" id="input_upload_pmid" name="upload" placeholder="PMID List">
+            <input type="submit" value="Upload" class="btn btn-primary">
+          </div>
+        <% end %>
+    </div>
+    <div class="modal-footer">
+      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Close</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+$("#form_pmid_upload").on("submit", function() {
+  var filename = $("#input_upload_pmid").val();
+  if (!filename || filename.length == 0) {
+    alert("Please select a file");
+    return false;
+  }
+  return true;
+});
+$('#reportrange').daterangepicker(
+    {
+      ranges: {
+         'Last 30 Days': [moment().subtract('days', 29), moment()],
+         'This Month': [moment().startOf('month'), moment().endOf('month')],
+         'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')],
+         'This Year': [moment().startOf('year'), moment().endOf('year')],
+         'All Range': [moment("00010101", "YYYYMMDD"), moment()]
+      }
+    },
+    function(start, end) {
+        $("#range-date").val(start.format('YYYY/MM/DD') + ':' + end.format('YYYY/MM/DD'));
+        $('#reportrange span').html(start.format('YYYY/MM/DD') + ' ~ ' + end.format('YYYY/MM/DD'));
+    }
+);
+$("#reportrange").data("daterangepicker").cb(moment().startOf('month'), moment().endOf('month'));
+</script>

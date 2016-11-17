@@ -1,0 +1,35 @@
+<% if @ids.nil? || @ids.empty?%>
+  No document found.
+<% else %>
+  <div class="page-header">
+    <h2>Articles from the File "<%=@filename%>"</h2>
+  </div>
+
+  <div class="well">
+    PMID importer assumes that all numbers in your file are PMID.
+    <b><%= @ids.size %></b> PMID(s) are found from your file. 
+    Please review the result extracted from your file.
+  </div>
+  <%= render :partial => "add_document", :locals =>{:type => "upload"} %>
+  <% unless @ids.nil? %>
+    <% @ids.each do |id| %>
+      <% d = DocumentCache.fetch(id) %>
+      <%=render :partial => "/documents/document", :locals => {:document => d, :pie_score => nil } %>
+    <% end %>
+  <% end %>
+  <script>
+    function set_score(pmid, score, updateDate) {
+      $(".add-document-btn").prop("disabled", false).removeClass("ui-state-disabled");
+      $(".ppi_score i.fa-spin").hide();
+      $("#chk-" + pmid).data('score', score);
+      $("#score-" + pmid).text(score);
+      $.post("/documents/check", {pmid: pmid, update:updateDate}, function() {});
+    }
+    $(".add-document-btn").prop("disabled", true).addClass("ui-state-disabled");
+    $(function() {
+      jsonp("http://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpiescore.cgi?pmid=<%=@ids.join(",") %>");
+    });
+
+  </script>
+<% end %>
+

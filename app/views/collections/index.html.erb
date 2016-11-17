@@ -1,0 +1,86 @@
+<div class="page-header">
+  <h1>Collections</h1>
+</div>
+
+
+<% if @collections.empty? %>
+  <div class="alert alert-info alert-block">
+    <p>No collection exists. Create one now.</p>
+    <ul>
+      <li>A collection represents a workspace for a curation job. It contains a set of documents for curation and results of curation. You can add documents from PubMed by keyword search. Documents in a collection share common settings such as entity types. A group of annotators can work together on a collection by sharing the collection.</li>
+      <li>[New Empty Collection] : Create an empty collection, then you can add or upload documents to the collection.</li>
+      <li>[Create Collection from BioC File] : If you have a BioC file, you can import the BioC file to create a new collection. </li>
+    </ul>
+  </div>
+<% else %>
+  <%= render :partial => "/shared/sortable" %>
+
+  <table class="table table-striped sortable">
+    <tr>
+      <th>Name</th>
+      <th>Source</th>
+      <th>Key</th>
+      <th>Date</th>
+      <th>Owner</th>
+      <th># Doc.</th>
+      <th> </th>
+    </tr>
+
+
+  <% @collections.each do |collection| %>
+    <tr>
+      <td>
+        <% unless collection.own?(current_user) %>
+          <i class="fa fa-share"></i>
+        <% end %> 
+        <%=link_to collection.name, collection %>
+      </td>
+      <td><%= collection.source %></td>
+      <td><%= collection.key %></td>
+      <td><%= collection.s_date %></td>
+      <td><%=link_to collection.owner.name_or_email, collection.owner %></td>
+      <td><%= collection.documents_count %></td>
+      <td>
+        <% if collection.own?(current_user) %>
+          <%= link_to collection, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-danger" do %>
+            <i class="fa fa-times-circle"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<br />
+
+<%= link_to new_collection_path, :class => "btn btn-success" do %>
+  <i class="fa fa-plus-sign"></i>
+  New Empty Collection
+<% end %>
+
+<%= link_to "#uploadModal", :class => "btn btn-info", :role => "button", "data-toggle" => "modal" do %>
+  <i class="fa fa-cloud-upload"></i>
+  Create Collection from BioC File
+<% end %>
+
+
+<hr>
+<div style="color:#aaa;padding-left:20px;">
+  <i class="fa fa-question-sign" style="margin-left:-13px;"></i>
+  <i>BioC: A Minimalist Approach to Interoperability for Biomedical Text Processing</i>.
+  For more detailed information, please visit
+  <%=link_to "http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/BioC/", :target => "_blank" do %>
+    <i class="fa fa-globe"></i>
+    the official web site
+  <% end %>.
+  <br>
+  You can download a
+  <%=link_to "/bionlp_sample.xml", :download => "bionlp_sample" do %>
+    <i class="fa fa-file" ></i>
+    sample BioC file
+  <% end %>. You may upload this file to BioQRator for test.
+</div>
+<%=render :partial => "/collections/upload_bioc" %>
+
+
