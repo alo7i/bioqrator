@@ -14,7 +14,7 @@ The time-consuming nature of manual curation and the rapid growth of biomedical 
 ## How to run ##
 
 1. You need to install git, ruby, rails, and MySQL first.
-2. Clone this repository: `git clone git@github.com:dongseop/bioqrator.git`
+2. Clone this repository: `git clone https://github.com/dongseop/bioqrator.git`
 2. `cd bioqrator`
 3. `bundle install`
 4. You need to create your own 'database.yml' and 'secrets.yml' in 'config' directory. You may refer sample files in the config directory.
