@@ -18,7 +18,7 @@ class ApiController < ApplicationController
     @term = params[:term]
     @term2 = @term.gsub(/[^0-9a-z ]/i, '')
     @genes = EntrezGene.find_by_sql([
-      "SELECT DISTINCT g.id, g.description, g.name, g.species
+      "SELECT DISTINCT g.id, g.description, g.name, g.species, g.species_priority
             FROM entrez_genes g JOIN entrez_synonyms s on g.id = s.entrez_gene_id
             WHERE s.name in (?) 
             ORDER BY g.species_priority DESC, g.name ASC", 

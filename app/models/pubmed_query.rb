@@ -21,13 +21,13 @@ class PubmedQuery < ActiveRecord::Base
     end
 
     dates = date_range.split(":")
-    url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&email=comeau&retmode=xml&retmax=1000' + 
+    url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&email=comeau&retmode=xml&retmax=1000' + 
             '&mindate=' + dates[0] +
             '&maxdate=' + dates[1] +
             '&datetype=pdat' +
             '&term=' + CGI::escape(term)
     logger.debug(url)
-    xml = Net::HTTP.get(URI.parse(url))
+    xml = URI.parse(url).read
 
     logger.debug(xml)
     doc = Nokogiri::XML(xml) do |config|

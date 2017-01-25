@@ -1,3 +1,4 @@
+require "open-uri"
 class SaveQueryCache < ActiveRecord::Base
   attr_accessible :cache_date, :duration, :save_query_docs_count, :save_query_id, :term
   belongs_to :save_query
@@ -22,15 +23,16 @@ class SaveQueryCache < ActiveRecord::Base
   
   def fetch
     self.term = self.save_query.term unless self.save_query.nil?
-    url = 'http://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpie.cgi?' + 
+    url = 'https://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpie.cgi?' + 
           'term=' + CGI::escape(self.term) +
           '&date=' + self.duration
-    logger.debug(url)
-    result = Net::HTTP.get(URI.parse(url))
-
+    # logger.debug(url)
+    result = URI.parse(url).read
+    # logger.debug(result)
     num_rows = 0
     self.save_query_docs.destroy_all
     result.split("\n").each do |line|
+      # logger.debug(line)
       line = line.strip
       data = line.split("\t")
       if data.size >= 3

@@ -27,7 +27,7 @@
     }
     $(".add-document-btn").prop("disabled", true).addClass("ui-state-disabled");
     $(function() {
-      jsonp("http://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpiescore.cgi?pmid=<%=@ids.join(",") %>");
+      jsonp("https://www.ncbi.nlm.nih.gov/CBBresearch/Wilbur/IRET/PIE/getpiescore.cgi?pmid=<%=@ids.join(",") %>");
     });
 
   </script>

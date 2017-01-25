@@ -34,35 +34,35 @@
   <span class="source"><%= document.source %></span><br/>
   <div>
     <%= link_to "http://www.ncbi.nlm.nih.gov/pubmed/#{document.pmid}", :target => "_blank", :class => "btn btn-mini" do %>
-      <i class="fa-external-link"></i> PMID: <%=document.pmid%>
+      <i class="fa fa-external-link"></i> PMID: <%=document.pmid%>
     <% end %>
     <% if !document.abstract.nil? && document.abstract.strip.size > 0 %>
       <button class="btn-ab btn btn-mini" onclick="$(this).parents('div.item').children('blockquote').toggle();">
-        <i class="fa-zoom-in"></i> Abstract
+        <i class="fa fa-zoom-in"></i> Abstract
       </button>
     <% end %>
     <% if checkbox %>
       <% if _class.include?("item_positive") %>
         <span class="badge badge-success">
-          <i class="fa-thumbs-up"></i> 
+          <i class="fa fa-thumbs-up"></i> 
           <span>Added in Collection</span>
         </span>
       <% elsif _class.include?("item_negative") %>
         <span class="badge badge-important ">
-          <i class="fa-thumbs-down"></i> 
+          <i class="fa fa-thumbs-down"></i> 
           <span>Marked as Irrelevant</span>
         </span>
         <button class="btn btn-mini" onclick="unmarkIrrelevant(this, <%=document.pmid%>);">
-          <i class="fa-undo"></i>
+          <i class="fa fa-undo"></i>
           <span>Undo Mark</span>
         </button>
       <% else %>
         <button class="btn-mini btn btn-info add-document-btn" onclick="postPMIDs([<%=document.pmid%>]);" >
-          <i class="fa-save"></i> 
+          <i class="fa fa-save"></i> 
           <span>Add to Collection</span>
         </button>
         <button class="btn btn-danger btn-mini" onclick="markIrrelevant(this, <%=document.pmid%>);" >
-          <i class="fa-thumbs-down"></i>
+          <i class="fa fa-thumbs-down"></i>
           <span>Mark as Irrelevant</span>
         </button>
       <% end %>
