@@ -141,7 +141,11 @@ class DocumentsController < ApplicationController
   end
 
   def check
-    update_date = Date.strptime(params[:update], "%Y-%m-%d")
+    begin 
+      update_date = Date.strptime(params[:update], "%Y-%m-%d")
+    rescue ArgumentError
+      update_date = nil
+    end
     DocumentCache.expire(params[:pmid], nil, update_date)
     render :text => "ok"
   end
