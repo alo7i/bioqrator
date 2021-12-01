@@ -1,0 +1,25 @@
+{
+  "name": "bioqrator",
+  "version": "1.0.0",
+  "description": "A web-based interactive biomedical literature curating system.",
+  "directories": {
+    "doc": "doc",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "docker-compose up",
+    "start-d": "docker-compose up -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alo7i/bioqrator.git"
+  },
+  "keywords": [],
+  "author": "afeiship",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alo7i/bioqrator/issues"
+  },
+  "homepage": "https://github.com/alo7i/bioqrator#readme"
+}
