@@ -25,9 +25,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
 	gem 'twitter-bootstrap-rails', :platform => :ruby
-	# gem 'therubyracer', :platform => :ruby
-  # gem 'node' 
-  # gem 'less-rails'
+	gem 'therubyracer', :platform => :ruby
+  gem 'node' 
+  gem 'less-rails'
 end
 gem 'mailgun_rails'
 gem 'rollbar'

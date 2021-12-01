@@ -59,6 +59,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
+    commonjs (0.2.7)
     daemons (1.2.3)
     devise (3.5.1)
       bcrypt (~> 3.0)
@@ -88,6 +89,12 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.6.0)
+      actionpack (>= 3.1)
+      less (~> 2.6.0)
+    libv8 (3.16.14.19)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -103,6 +110,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     netrc (0.10.3)
+    node (1.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -134,6 +142,7 @@ GEM
     rake (10.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rest-client (1.8.0)
@@ -156,6 +165,9 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -206,17 +218,20 @@ DEPENDENCIES
   htmlentities
   jquery-rails
   kaminari
+  less-rails
   mailgun_rails
   mysql2
+  node
   nokogiri
   quiet_assets
   rails (= 3.2.22.2)
   rollbar
   sass-rails (~> 3.2.3)
+  therubyracer
   thin
   tire
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
 
 BUNDLED WITH
-   1.13.7
+   1.17.3
