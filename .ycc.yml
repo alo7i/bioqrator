@@ -1,3 +1,3 @@
 commands:
   upload_nginx_conf:
-    - scp default root@39.96.160.44:/etc/nginx/sites-available/default
+    - scp ./nginx/default root@39.96.160.44:/etc/nginx/sites-available/default
