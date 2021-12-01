@@ -1,6 +1,9 @@
 # Bioqrator
 > A web-based interactive biomedical literature curating system.
 
+## preview
+- http://39.96.160.44/
+
 ## get-started
 ```shell
 git clone git@github.com:alo7i/bioqrator.git
@@ -8,7 +11,7 @@ docker-compose up
 ```
 
 ## nginx
-> /etc/nginx/sites-available/bioqrator.conf
+> /etc/nginx/sites-available/defatult
 ```conf
 server {
   listen 80 default_server;
