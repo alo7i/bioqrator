@@ -27,7 +27,7 @@ server {
 }
 ```
 
-## error
+## error 简单的解决办法
 - 启动的时候有可能报错，问题出在 public/assets 目录无法编译通过
 - 可以找个现成的(aric.zheng) assets 目录，然后放到 public/assets 下面。
 
@@ -43,7 +43,7 @@ ActionView::Template::Error (application.js isn't precompiled):
   app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__765559360058906216_34702260'
 ~~~
 
-## 正常的解决办法
+## error 正常的解决办法
 - docker-entrypoint.sh 里打开这两句的注释
 ```shell
 # bundle install
